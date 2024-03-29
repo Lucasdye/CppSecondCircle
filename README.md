@@ -1,2 +1,2 @@
 # CppSecondCircle
-42 Cpp second circle
+42 school second cpp circle (2024)
