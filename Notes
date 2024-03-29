@@ -1,0 +1,10 @@
+CppSecondCircle-Try and catch
+
+Ex00 
+
+-The error message throw is sent straight away from the constructor FALSE. No need to implement an "errorMsg" function.
+	- The Exceptions we're defining comes is a DERIVED class from the std:exception. But we're redifining what() method : const char* what() const throw()
+	- const char* what() const throw() has two followed functions ! throw() guarantees what won't throw any exception ! 
+- The exception class is the exception ! that's what the blocking catch waits to catch, a reference to the exception instance.
+- Try and Catch ++ is that it's clear for the reader.
+- What does Try and catch does to the "tried" object construction if an exception is thrown ? The object's memory is retrieved and does not exists. ///
