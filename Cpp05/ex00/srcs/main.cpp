@@ -6,7 +6,7 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2029/03/20 10:54:43 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/03/29 18:05:47 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/04/02 14:11:09 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int	main()
 	catch(const std::exception& e)
 	{
 		std::cerr << YELLOW << BOLD <<  e.what() << END_C <<  std::endl;
-	}
 	return (0);
+	}
 }
 
 

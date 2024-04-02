@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucasbouguet <lucasbouguet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 01/04/2024 10:55:55 by lucasbouguet          #+#    #+#             */
-/*   Updated: 01/04/2024 10:55:55 by lucasbouguet         ###   ########.fr       */
+/*   Created: 2002/04/20 19:42:09 by lbouguet          #+#    #+#             */
+/*   Updated: 2024/04/02 20:18:30 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
+#ifndef INTERN_HPP
+# define INTERN_HPP
 
 #include "base.hpp"
 
-class RobotomyRequestForm : public AForm
+
+class Intern
 {
 	private:
-
-
+		AForm	Intern::*ptrToSomeMethod (const std::string&);
+		AForm	*makeShrubberyForm (std::string &name);
+		// AForm	*makePresidentialForm (std::string &name);
+		// AForm	*makeRobotomyForm (std::string &name);
 
 	public:
+	
 		//-------------------- funcs --------------------------------------------//
-		void execute(Bureaucrat const &executor);
+		AForm	*makeForm(std::string name, AForm &target);
 		//-------------------- Set/get ------------------------------------------//
 		//-------------------- Constructor/Destructor ---------------------------//
-	    RobotomyRequestForm();
-	    RobotomyRequestForm(RobotomyRequestForm const & src);
-		RobotomyRequestForm(std::string &target);
-	    ~RobotomyRequestForm();
+	    Intern();
+	    Intern(Intern const & src);
+	    ~Intern();
 		//-------------------- Operators ----------------------------------------//
-	    RobotomyRequestForm& operator=(RobotomyRequestForm const & instance);
+	    Intern& operator=(Intern const & instance);
 };
 
 #endif
