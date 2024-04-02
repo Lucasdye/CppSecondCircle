@@ -35,6 +35,16 @@ void	Bureaucrat::incrGrade()
 	return ;
 }
 
+void	Bureaucrat::signForm(Form& f)
+{
+	if (_grade > f.getSignGrade() )
+		std::cout << _name <<  " couldn’t sign " << f.getName() << ". " << std::endl;
+	else
+		std::cout << BLUE << BOLD << "Bureaucrat " << _name << " signed " <<  f.getName() << END_C <<std::endl;
+	f.beSigned(*this);
+	return ;
+} 
+
 //-------------------- Set/Get ----------------------------------------------//
 std::string		Bureaucrat::getName() const
 {

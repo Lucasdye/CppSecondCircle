@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   GradeTooHighException.hpp                        :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucasbouguet <lucasbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 29/03/2024 11:04:20 by lbouguet          #+#    #+#             */
-/*   Updated: 29/03/2024 11:04:20 by lbouguet         ###   ########.fr       */
+/*   Created: 01/04/2024 10:55:34 by lucasbouguet          #+#    #+#             */
+/*   Updated: 01/04/2024 10:55:34 by lucasbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GRADETOOHIGHEXCEPTION_HPP
-# define GRADETOOHIGHEXCEPTION_HPP
+#ifndef SHRUBBERYCREATIONFORM_HPP
+# define SHRUBBERYCREATIONFORM_HPP
 
 #include "base.hpp"
 
+class AForm;
 
-class GradeTooHighException : public std::exception
+class ShrubberyCreationForm : public AForm
 {
 	private:
 
+
+
 	public:
 		//-------------------- funcs --------------------------------------------//
+		void	execute(Bureaucrat const &executor);
 		//-------------------- Set/get ------------------------------------------//
 		//-------------------- Constructor/Destructor ---------------------------//
-	    GradeTooHighException();
-	    ~GradeTooHighException();
 		//-------------------- Operators ----------------------------------------//
+	    ShrubberyCreationForm();
+		ShrubberyCreationForm(std::string &target);
+	    ShrubberyCreationForm(ShrubberyCreationForm const & src);
+	    ShrubberyCreationForm& operator=(ShrubberyCreationForm const & instance);
+	    ~ShrubberyCreationForm();
 
-		
 };
 
 #endif

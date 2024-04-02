@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucasbouguet <lucasbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,7 +17,7 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
 		std::string const 	_name;
@@ -28,18 +28,19 @@ class Form
 	public:
 		//-------------------- funcs --------------------------------------------//
 		void				beSigned(Bureaucrat& bur);
+		void virtual		execute(Bureaucrat const & executor);
 		//-------------------- Set/get ------------------------------------------//
-		std::string 		getName() const;
+		virtual std::string getName() const;
 		int					getSignGrade() const;
 		int					getExecGrade() const;
 		bool				getIsSigned() const;
 		//-------------------- Constructor/Destructor ---------------------------//
-	    Form();
-	   	Form(Form const & src);
-		Form(std::string name, int signGrade, int execGrade);
-	    ~Form();
+	    AForm();
+	   	AForm(AForm const & src);
+		AForm(std::string name, int signGrade, int execGrade);
+	    ~AForm();
 		//-------------------- Operators ----------------------------------------//
-	    Form& operator=(Form const & instance);
+	    AForm& operator=(AForm const & instance);
 		//-------------------- Exceptions ---------------------------------------//
 		class	GradeTooHighException: public std::exception
 		{

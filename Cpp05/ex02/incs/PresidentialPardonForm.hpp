@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   GradeTooLowException.hpp                           :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucasbouguet <lucasbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2029/03/20 11:04:48 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/03/29 13:44:25 by lbouguet         ###   ########.fr       */
+/*   Created: 01/04/2024 10:56:11 by lucasbouguet          #+#    #+#             */
+/*   Updated: 01/04/2024 10:56:11 by lucasbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GRADETOOLOWEXCEPTION_HPP
-# define GRADETOOLOWEXCEPTION_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
-#include "../incs/base.hpp"
+#include "base.hpp"
 
+class AForm;
+class Bureaucrat;
 
-class GradeTooLowException
+class PresidentialPardonForm : public AForm
 {
 	private:
-	
+
 	public:
 		//-------------------- funcs --------------------------------------------//
+		void execute(Bureaucrat const &executor);
 		//-------------------- Set/get ------------------------------------------//
+		//std::string getName() const;
 		//-------------------- Constructor/Destructor ---------------------------//
-	    GradeTooLowException();
-	    ~GradeTooLowException();
 		//-------------------- Operators ----------------------------------------//
+	    PresidentialPardonForm();
+	    PresidentialPardonForm(std::string &target);
+	    PresidentialPardonForm(PresidentialPardonForm const & src);
+	    PresidentialPardonForm& operator=(PresidentialPardonForm const & instance);
+	    ~PresidentialPardonForm();
+
 };
 
 #endif

@@ -13,16 +13,12 @@
 #include "../incs/base.hpp"
 
 //-------------------- funcs ------------------------------------------------//
-bool	Form::beSigned(Bureaucrat& bur)
+void	Form::beSigned(Bureaucrat& bur)
 {
 	if (bur.getGrade() > _signGrade)
-	{	
 		throw Form::GradeTooLowException();
-		return (false);
-	}
 	else
 		_isSigned = true;
-	return (true);
 }
 
 //-------------------- Set/Get ----------------------------------------------//
@@ -53,7 +49,7 @@ Form::Form(): _name("noNameForm"), _isSigned(0), _signGrade(1), _execGrade(1)
 	return ;
 }
 
-Form::Form(std::string name, bool isSigned, int signGrade, int execGrade): _name(name), _isSigned(isSigned), _signGrade(signGrade), _execGrade(execGrade)
+Form::Form(std::string name, int signGrade, int execGrade): _name(name), _isSigned(false), _signGrade(signGrade), _execGrade(execGrade)
 {
 	std::cout << "Parametric constructor called for Form" << std::endl;
 	return ;
@@ -74,22 +70,27 @@ Form::~Form()
 //-------------------- Exceptions -------------------------------------------//
 const char	*Form::GradeTooHighException::what() const throw()
 {
-	return ("The grade's too high (highest is 1)");
+	return ("The grade's too high");
 }
 
 const char	*Form::GradeTooLowException::what() const throw()
 {
-	return ("The grade's too low (lowest is 150)");
+	return ("The grade's too low");
 }
 
+//Form::Form(Form const & src): _name(""), _isSigned(0), _signGrade(1), _execGrade(1)
+// {
+// 	std::cout << "Copy constructor called for Form" << std::endl;
+// 	*this = src;
+// 	return ;
+//}
 //-------------------- Operators --------------------------------------------//
-Form::Form(Form const & src): _name(""), _isSigned(0), _signGrade(1), _execGrade(1)
-{
-	std::cout << "Copy constructor called for Form" << std::endl;
-	*this = src;
-	return ;
-}
 
+std::ostream&   operator<<(std::ostream& out, const Form& inst)
+{
+	out << BOLD << "Form " << inst.getName() << " signing" << "'s grade's " <<  inst.getSignGrade() << " and execution's grade's " << inst.getExecGrade() << "." << std::endl << "This form statu's " << inst.getIsSigned() << "." <<END_C << std::endl;
+	return (out);
+}
 Form&	Form::operator=(Form const & instance)
 {
 	std::cout << "Assignment operator called for Form" << std::endl;
