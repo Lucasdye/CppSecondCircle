@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.cpp                                           :+:      :+:    :+:   */
+/*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucasbouguet <lucasbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,15 +13,15 @@
 #include "../incs/base.hpp"
 
 //-------------------- funcs ------------------------------------------------//
-void	AForm::beSigned(Bureaucrat& bur)
+void	Form::beSigned(Bureaucrat& bur)
 {
 	if (bur.getGrade() > _signGrade)
-		throw AForm::GradeTooLowException();
+		throw Form::GradeTooLowException();
 	else
 		_isSigned = true;
 }
 
-void	AForm::execute(Bureaucrat const& executor)
+void	Form::execute(Bureaucrat const& executor) const
 {
 	if (executor.getGrade() > _execGrade)
 		throw GradeTooLowException();
@@ -29,73 +29,73 @@ void	AForm::execute(Bureaucrat const& executor)
 }
 
 //-------------------- Set/Get ----------------------------------------------//
-std::string 		AForm::getName() const
+std::string 		Form::getName() const
 {
 	return (_name);
 }
 
-int					AForm::getSignGrade() const
+int					Form::getSignGrade() const
 {
 	return (_signGrade);
 }
 
-int					AForm::getExecGrade() const
+int					Form::getExecGrade() const
 {
 	return (_execGrade);
 }
 
-bool				AForm::getIsSigned() const
+bool				Form::getIsSigned() const
 {
 	return (_isSigned);
 }
 
 
 //-------------------- Constructor/Destructor -------------------------------//
-AForm::AForm(): _name("noNameAForm"), _isSigned(0), _signGrade(1), _execGrade(1)
+Form::Form(): _name("noNameForm"), _isSigned(0), _signGrade(1), _execGrade(1)
 {
-	std::cout << ITALIC << "Default constructor called for AForm " << _name << END_C << std::endl;
+	std::cout << ITALIC << "Default constructor called for Form " << _name << END_C << std::endl;
 	return ;
 }
 
-AForm::AForm(std::string name, int signGrade, int execGrade): _name(name), _isSigned(false), _signGrade(signGrade), _execGrade(execGrade)
+Form::Form(std::string name, int signGrade, int execGrade): _name(name), _isSigned(false), _signGrade(signGrade), _execGrade(execGrade)
 {
-	std::cout << ITALIC << "Parametric constructor called for AForm " << _name << END_C << std::endl;
+	std::cout << ITALIC << "Parametric constructor called for Form " << _name << END_C << std::endl;
 	return ;
 }
 
-AForm::AForm(AForm const &src): _name(src._name), _isSigned(src._isSigned), _signGrade(src._signGrade), _execGrade(src._execGrade)
+Form::Form(Form const &src): _name(src._name), _isSigned(src._isSigned), _signGrade(src._signGrade), _execGrade(src._execGrade)
 {
-	std::cout << ITALIC << "Copy constructor called for AForm " << _name << END_C << std::endl;
+	std::cout << ITALIC << "Copy constructor called for Form " << _name << END_C << std::endl;
 	return ;
 }
 
-AForm::~AForm()
+Form::~Form()
 {
-	std::cout << ITALIC << "Destructor called for AForm " << _name << END_C << std::endl;
+	std::cout << ITALIC << "Destructor called for Form " << _name << END_C << std::endl;
 	return ;
 }
 
 //-------------------- Exceptions -------------------------------------------//
-const char	*AForm::GradeTooHighException::what() const throw()
+const char	*Form::GradeTooHighException::what() const throw()
 {
 	return ("The grade's too high");
 }
 
-const char	*AForm::GradeTooLowException::what() const throw()
+const char	*Form::GradeTooLowException::what() const throw()
 {
 	return ("The grade's too low");
 }
 
 //-------------------- Operators --------------------------------------------//
-std::ostream&   operator<<(std::ostream& out, const AForm& inst)
+std::ostream&   operator<<(std::ostream& out, const Form& inst)
 {
-	out << BOLD << "AForm " << inst.getName() << " signing" << "'s grade's " <<  inst.getSignGrade() << " and execution's grade's " << inst.getExecGrade() << "." << std::endl << "This Aform statu's " << inst.getIsSigned() << "." <<END_C << std::endl;
+	out << BOLD << "Form " << inst.getName() << " signing" << "'s grade's " <<  inst.getSignGrade() << " and execution's grade's " << inst.getExecGrade() << "." << std::endl << "This form statu's " << inst.getIsSigned() << "." <<END_C << std::endl;
 	return (out);
 }
 
-AForm&	AForm::operator=(AForm const & instance)
+Form&	Form::operator=(Form const & instance)
 {
-	std::cout << "Assignment operator called for AForm" << std::endl;
+	std::cout << "Assignment operator called for Form" << std::endl;
 	if (this != &instance)
 	{
 		_isSigned = instance._isSigned;

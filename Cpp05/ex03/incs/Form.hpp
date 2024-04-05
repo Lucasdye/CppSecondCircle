@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.hpp                                           :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucasbouguet <lucasbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -9,6 +9,8 @@
 /*   Updated: 30/03/2024 18:25:16 by lucasbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #ifndef FORM_HPP
 # define FORM_HPP
@@ -18,7 +20,7 @@
 class Bureaucrat;
 class ShrubberyCreationForm;
 
-class AForm
+class Form
 {
 	private:
 		std::string const 	_name;
@@ -29,19 +31,21 @@ class AForm
 	public:
 		//-------------------- funcs --------------------------------------------//
 		void				beSigned(Bureaucrat& bur);
-		void virtual		execute(Bureaucrat const & executor) = 0;
+		void virtual		execute(Bureaucrat const& executor) const = 0;
+		
 		//-------------------- Set/get ------------------------------------------//
 		std::string 		getName() const;
 		int					getSignGrade() const;
 		int					getExecGrade() const;
 		bool				getIsSigned() const;
+		
 		//-------------------- Constructor/Destructor ---------------------------//
-	    AForm();
-	   	AForm(AForm const & src);
-		AForm(std::string name, int signGrade, int execGrade);
-	    virtual ~AForm();
+	    Form();
+	   	Form(Form const & src);
+		Form(std::string name, int signGrade, int execGrade);
+	    virtual ~Form();
 		//-------------------- Operators ----------------------------------------//
-	    AForm& operator=(AForm const & instance);
+	    Form& operator=(Form const & instance);
 		//-------------------- Exceptions ---------------------------------------//
 		class	GradeTooHighException: public std::exception
 		{
@@ -56,6 +60,6 @@ class AForm
 		};
 };
 
-std::ostream&   operator<<(std::ostream& out, const AForm& inst);
+std::ostream&   operator<<(std::ostream& out, const Form& inst);
 #endif
 

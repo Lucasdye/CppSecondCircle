@@ -13,7 +13,7 @@
 #include "../incs/RobotomyRequestForm.hpp"
 
 //-------------------- funcs ------------------------------------------------//
-void	RobotomyRequestForm::execute(Bureaucrat const &executor)
+void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
 	if (getIsSigned())
 	{
@@ -44,7 +44,7 @@ RobotomyRequestForm::RobotomyRequestForm() : AForm()
 
 RobotomyRequestForm::RobotomyRequestForm(std::string &target) : AForm(target, 72, 45)
 {
-	std::cout << ITALIC <<  "Parametric constructor called for PresidentialPardonForm " << AForm::getName() << END_C << std::endl;
+	std::cout << ITALIC <<  "Parametric constructor called for RobotomyRequestForm " << AForm::getName() << END_C << std::endl;
 	return ;
 }
 

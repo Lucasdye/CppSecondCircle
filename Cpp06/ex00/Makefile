@@ -1,9 +1,9 @@
-NAME = Intern
+NAME = ScalarConversion
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 OBJ_DIR = objs/
 
-SRC =	srcs/main.cpp srcs/Bureaucrat.cpp srcs/Form.cpp srcs/ShrubberyCreationForm.cpp  srcs/PresidentialPardonForm.cpp srcs/RobotomyRequestForm.cpp ./Intern.cpp
+SRC =	srcs/main.cpp srcs/ScalarConverter.cpp srcs/funcs.cpp 
 
 OBJ = $(addprefix $(OBJ_DIR), $(notdir $(SRC:.cpp=.o)))
 

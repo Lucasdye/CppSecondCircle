@@ -29,7 +29,7 @@ class AForm
 	public:
 		//-------------------- funcs --------------------------------------------//
 		void				beSigned(Bureaucrat& bur);
-		void virtual		execute(Bureaucrat const & executor) = 0;
+		void virtual		execute(Bureaucrat const & executor) const = 0;
 		//-------------------- Set/get ------------------------------------------//
 		std::string 		getName() const;
 		int					getSignGrade() const;

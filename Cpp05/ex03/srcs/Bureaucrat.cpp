@@ -6,7 +6,7 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2029/03/20 10:54:43 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/04/02 19:22:24 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/04/04 16:35:26 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void			Bureaucrat::incrGrade()
 	return ;
 }
 
-void			Bureaucrat::signForm(AForm& f)
+void			Bureaucrat::signForm(Form& f)
 {
 	if (_grade > f.getSignGrade() )
 		std::cout << _name <<  " couldn’t sign " << f.getName() << ". " << std::endl;
@@ -46,13 +46,18 @@ void			Bureaucrat::signForm(AForm& f)
 	return ;
 } 
 
-void			Bureaucrat::executeForm(AForm const & form)
+void			Bureaucrat::executeForm(Form const & form)
 {
 	if (_grade > form.getExecGrade())
 		throw Bureaucrat::GradeTooLowException();
+	else if (!form.getIsSigned())
+		std::cout <<  BOLD << _name << " could not execute " << form.getName() << " because the form isn't signed." << END_C << std::endl;
 	else
+	{
+		form.execute(*this);
 		std::cout <<  BOLD << _name << " executed " << form.getName() << END_C << std::endl;
-	return ; 
+	}
+	return ;
 }
 
 //-------------------- Set/Get ----------------------------------------------//

@@ -13,7 +13,7 @@
 #include "../incs/base.hpp"
 
 //-------------------- funcs ------------------------------------------------//
-void	ShrubberyCreationForm::execute(Bureaucrat const &executor)
+void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 
 	if (getIsSigned())

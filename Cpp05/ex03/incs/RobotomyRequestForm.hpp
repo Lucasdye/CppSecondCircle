@@ -15,15 +15,13 @@
 
 #include "base.hpp"
 
-class RobotomyRequestForm : public AForm
+class RobotomyRequestForm : public Form
 {
 	private:
 
-
-
 	public:
 		//-------------------- funcs --------------------------------------------//
-		void execute(Bureaucrat const &executor);
+		void execute(Bureaucrat const &executor) const;
 		//-------------------- Set/get ------------------------------------------//
 		//-------------------- Constructor/Destructor ---------------------------//
 	    RobotomyRequestForm();

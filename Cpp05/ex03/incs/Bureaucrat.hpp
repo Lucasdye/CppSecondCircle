@@ -6,16 +6,18 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2029/03/20 10:54:43 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/04/02 17:29:12 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/04/04 17:05:33 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
 #include "base.hpp"
 
-class AForm;
+class Form;
 
 class Bureaucrat
 {
@@ -28,8 +30,8 @@ class Bureaucrat
 		//-------------------- funcs ----------------------------------------//
 		void					incrGrade();
 		void					decrGrade();
-		void					signForm(AForm&	f);
-		void					executeForm(AForm const & form);
+		void					signForm(Form&	f);
+		void					executeForm(Form const & form);
 		
 		//-------------------- Set/get --------------------------------------//
 		std::string				getName() const;

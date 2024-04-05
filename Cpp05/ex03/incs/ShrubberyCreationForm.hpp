@@ -10,22 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+
 #ifndef SHRUBBERYCREATIONFORM_HPP
 # define SHRUBBERYCREATIONFORM_HPP
 
 #include "base.hpp"
 
-class AForm;
-
-class ShrubberyCreationForm : public AForm
+class ShrubberyCreationForm : public Form
 {
 	private:
 
-
-
 	public:
 		//-------------------- funcs --------------------------------------------//
-		void	execute(Bureaucrat const &executor);
+		void	execute(Bureaucrat const &executor) const;
 		//-------------------- Set/get ------------------------------------------//
 		//-------------------- Constructor/Destructor ---------------------------//
 		//-------------------- Operators ----------------------------------------//

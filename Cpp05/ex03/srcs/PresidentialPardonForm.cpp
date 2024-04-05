@@ -13,11 +13,11 @@
 #include "../incs/base.hpp"
 
 //-------------------- funcs ------------------------------------------------//
-void	PresidentialPardonForm::execute(Bureaucrat const &executor)
+void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
 	if (getIsSigned())
 	{
-		AForm::execute(executor);
+		Form::execute(executor);
 		std::cout << BOLD << executor.getName() << " has been pardoned by Zaphod Beeblebrox" << END_C <<std::endl;
 	}
 	else
@@ -30,19 +30,19 @@ void	PresidentialPardonForm::execute(Bureaucrat const &executor)
 //********************* In Abstract *****************************************//
 
 //-------------------- Constructor/Destructor -------------------------------//
-PresidentialPardonForm::PresidentialPardonForm(std::string &target): AForm(target, 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(std::string &target): Form(target, 25, 5)
 {
 	std::cout << ITALIC <<"Parametric constructor called for PresidentialPardonForm" << getName() << END_C << std::endl;
 	return ;
 }
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm()
+PresidentialPardonForm::PresidentialPardonForm() : Form()
 {
 	std::cout << ITALIC <<"Default constructor called for PresidentialPardonForm" << getName() << END_C << std::endl;
 	return ;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src) : AForm(src)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src) : Form(src)
 {
 	std::cout << ITALIC <<"Copy constructor called for PresidentialPardonForm" << getName() << END_C << std::endl;
 	return ;
@@ -60,7 +60,7 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=(PresidentialPardonForm
 	std::cout << ITALIC <<"Assignment operator called for PresidentialPardonForm" << getName() << END_C << std::endl;
 	if (this != &instance)
 	{
-		AForm::operator=(instance);
+		Form::operator=(instance);
 	}
 	return *this;
 }

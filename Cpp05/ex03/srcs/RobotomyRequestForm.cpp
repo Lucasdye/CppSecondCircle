@@ -13,16 +13,16 @@
 #include "../incs/RobotomyRequestForm.hpp"
 
 //-------------------- funcs ------------------------------------------------//
-void	RobotomyRequestForm::execute(Bureaucrat const &executor)
+void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
 	if (getIsSigned())
 	{
-		AForm::execute(executor);
+		Form::execute(executor);
 		srand(static_cast<unsigned int>(time(0)));
 		int rdmNumb = rand() % 101;
 		if (rdmNumb < 50)
 			std::cout << BOLD << "TRRrrrRRrrrRRrrrrrrrRRRRRRRRRrrRR" << END_C << std::endl;
-		else 
+		else
 			std::cout << BOLD << "Robotomy has failed" << END_C << std::endl;
 	}
 	else
@@ -31,42 +31,41 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor)
 }
 
 //-------------------- Operators --------------------------------------------//
-
 //-------------------- Set/Get ----------------------------------------------//
 //********************* In Abstract *****************************************//
 
 //-------------------- Constructor/Destructor -------------------------------//
-RobotomyRequestForm::RobotomyRequestForm() : AForm()
+RobotomyRequestForm::RobotomyRequestForm() : Form()
 {
-	std::cout << ITALIC <<  "Default constructor called for RobotomyRequestForm " << AForm::getName() << END_C << std::endl;
+	std::cout << ITALIC <<  "Default constructor called for RobotomyRequestForm " << Form::getName() << END_C << std::endl;
 	return ;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string &target) : AForm(target, 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(std::string &target) : Form(target, 72, 45)
 {
-	std::cout << ITALIC <<  "Parametric constructor called for PresidentialPardonForm " << AForm::getName() << END_C << std::endl;
+	std::cout << ITALIC <<  "Parametric constructor called for RobotomyRequestForm  " << Form::getName() << END_C << std::endl;
 	return ;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & src): AForm(src)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & src): Form(src)
 {
-	std::cout << ITALIC <<  "Copy constructor called for RobotomyRequestForm " << AForm::getName() << END_C << std::endl;
+	std::cout << ITALIC <<  "Copy constructor called for RobotomyRequestForm " << Form::getName() << END_C << std::endl;
 	return ;
 }
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm const & instance)
 {
-	std::cout << ITALIC <<  "Assignment operator called for RobotomyRequestForm " << AForm::getName() << END_C << std::endl;
+	std::cout << ITALIC <<  "Assignment operator called for RobotomyRequestForm " << Form::getName() << END_C << std::endl;
 	if (this != &instance)
 	{	
-		AForm::operator=(instance);
+		Form::operator=(instance);
 	}
 	return *this;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
-	std::cout << ITALIC <<  "Destructor called for RobotomyRequestForm" << AForm::getName() << END_C << std::endl;
+	std::cout << ITALIC <<  "Destructor called for RobotomyRequestForm" << Form::getName() << END_C << std::endl;
 	return ;
 }
 

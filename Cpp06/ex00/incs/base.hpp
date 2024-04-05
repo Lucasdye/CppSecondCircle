@@ -9,7 +9,6 @@
 # ifndef ERR
 #  define ERR -1
 # endif
-
 //-------------------- CPP libraries ----------------------------------------//
 # include <iostream>
 # include <sstream>
@@ -23,13 +22,8 @@
 # include <limits.h>
 
 //-------------------- Classes  ---------------------------------------------//
-# include "Bureaucrat.hpp"
-# include "Form.hpp"
-# include "ShrubberyCreationForm.hpp"
-# include "RobotomyRequestForm.hpp"
-# include "PresidentialPardonForm.hpp"
-# include "Intern.hpp"
-
+# include "funcs.hpp"
+# include "ScalarConverter.hpp"
 //-------------------- Aesthetics -------------------------------------------//
 # include "colors.hpp"
 //-------------------- My funcs proto ---------------------------------------//

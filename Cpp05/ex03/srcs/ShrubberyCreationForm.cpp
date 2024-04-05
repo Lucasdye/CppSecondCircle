@@ -13,13 +13,13 @@
 #include "../incs/base.hpp"
 
 //-------------------- funcs ------------------------------------------------//
-void	ShrubberyCreationForm::execute(Bureaucrat const &executor)
+void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 
 	if (getIsSigned())
 	{	
-		AForm::execute(executor);
-		std::string fileName = AForm::getName();
+		Form::execute(executor);
+		std::string fileName = Form::getName();
 		std::ofstream outfile;
 		outfile.open(fileName.c_str());
     	if(outfile.is_open()) 
@@ -38,7 +38,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor)
 
 						 << std::endl; // Example, replace with actual ASCII art
     	    outfile.close();
-			std::cout << BOLD << "The Form " << AForm::getName() << " was successfully executed by " << executor.getName() << END_C << std::endl;
+			std::cout << BOLD << "The Form " << Form::getName() << " was successfully executed by " << executor.getName() << END_C << std::endl;
     	}
 	}
 	else
@@ -50,27 +50,27 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor)
 //********************* In Abstract *****************************************//
 
 //-------------------- Constructor/Destructor -------------------------------//
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm()
+ShrubberyCreationForm::ShrubberyCreationForm() : Form()
 {
-	std::cout << ITALIC << "Default constructor called for ShrubberyCreationForm " << AForm::getName() << END_C << std::endl;
+	std::cout << ITALIC << "Default constructor called for ShrubberyCreationForm " << Form::getName() << END_C << std::endl;
 	return ;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string& target): AForm(target + "_shrubbery", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string& target): Form(target + "_shrubbery", 145, 137)
 {
-	std::cout << ITALIC << "Parametric constructor called for ShrubberyCreationForm " << AForm::getName() << END_C << std::endl;
+	std::cout << ITALIC << "Parametric constructor called for ShrubberyCreationForm " << Form::getName() << END_C << std::endl;
 	return ;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) : AForm(src)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) : Form(src)
 {
-	std::cout << ITALIC << "Copy constructor called for ShrubberyCreationForm " << AForm::getName() << END_C << std::endl;
+	std::cout << ITALIC << "Copy constructor called for ShrubberyCreationForm " << Form::getName() << END_C << std::endl;
 	return ;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-	std::cout << ITALIC << "Destructor called for ShrubberyCreationForm " << AForm::getName() << END_C << std::endl;
+	std::cout << ITALIC << "Destructor called for ShrubberyCreationForm " << Form::getName() << END_C << std::endl;
 	return ;
 }
 
@@ -83,7 +83,7 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 	std::cout << "Assignment operator called for ShrubberyCreationForm" << std::endl;
 	if (this != &instance)
 	{
-		AForm::operator=(instance);
+		Form::operator=(instance);
 	}
 	return *this;
 }

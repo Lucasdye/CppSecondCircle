@@ -13,7 +13,7 @@
 #include "../incs/base.hpp"
 
 //-------------------- funcs ------------------------------------------------//
-void	PresidentialPardonForm::execute(Bureaucrat const &executor)
+void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
 	if (getIsSigned())
 	{

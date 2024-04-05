@@ -25,7 +25,7 @@ class ShrubberyCreationForm : public AForm
 
 	public:
 		//-------------------- funcs --------------------------------------------//
-		void	execute(Bureaucrat const &executor);
+		void	execute(Bureaucrat const &executor) const;
 		//-------------------- Set/get ------------------------------------------//
 		//-------------------- Constructor/Destructor ---------------------------//
 		//-------------------- Operators ----------------------------------------//

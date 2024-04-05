@@ -10,21 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
+#pragma once
+
 #ifndef PRESIDENTIALPARDONFORM_HPP
 # define PRESIDENTIALPARDONFORM_HPP
 
 #include "base.hpp"
 
-class AForm;
-class Bureaucrat;
 
-class PresidentialPardonForm : public AForm
+class PresidentialPardonForm : public Form
 {
 	private:
 
 	public:
 		//-------------------- funcs --------------------------------------------//
-		void execute(Bureaucrat const &executor);
+		void execute(Bureaucrat const &executor) const;
 		//-------------------- Set/get ------------------------------------------//
 		//-------------------- Constructor/Destructor ---------------------------//
 	    PresidentialPardonForm();
