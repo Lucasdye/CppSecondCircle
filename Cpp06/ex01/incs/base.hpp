@@ -41,10 +41,10 @@
 # include <cmath>
 # include <cstdlib>
 # include <limits.h>
+#include <cstdint>
 
 //-------------------- Classes  ---------------------------------------------//
-# include "funcs.hpp"
-# include "ScalarConverter.hpp"
+# include "Serializer.hpp"
 //-------------------- Aesthetics -------------------------------------------//
 # include "colors.hpp"
 //-------------------- My funcs proto ---------------------------------------//

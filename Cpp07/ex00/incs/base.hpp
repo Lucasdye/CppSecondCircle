@@ -42,10 +42,11 @@
 # include <cstdlib>
 # include <limits.h>
 
+//-------------------- Templates  --------------------------------------------//
+# include "funcsTemplate.hpp"
 //-------------------- Classes  ---------------------------------------------//
-# include "funcs.hpp"
-# include "ScalarConverter.hpp"
 //-------------------- Aesthetics -------------------------------------------//
 # include "colors.hpp"
 //-------------------- My funcs proto ---------------------------------------//
+
 #endif 

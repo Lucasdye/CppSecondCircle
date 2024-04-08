@@ -1,10 +1,9 @@
-NAME = ScalarConversion
+NAME = Base
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 OBJ_DIR = objs/
 
-SRC =	srcs/main.cpp srcs/ScalarConverter.cpp srcs/convertFuncs.cpp 
-
+SRC =	srcs/main.cpp srcs/Base.cpp srcs/A.cpp srcs/B.cpp srcs/C.cpp 
 OBJ = $(addprefix $(OBJ_DIR), $(notdir $(SRC:.cpp=.o)))
 
 TOTAL_FILES := $(words $(SRC))

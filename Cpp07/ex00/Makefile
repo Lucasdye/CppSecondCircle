@@ -1,9 +1,9 @@
-NAME = ScalarConversion
+NAME = usingTemplate
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 OBJ_DIR = objs/
 
-SRC =	srcs/main.cpp srcs/ScalarConverter.cpp srcs/convertFuncs.cpp 
+SRC =	srcs/main.cpp
 
 OBJ = $(addprefix $(OBJ_DIR), $(notdir $(SRC:.cpp=.o)))
 

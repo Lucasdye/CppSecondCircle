@@ -1,5 +1,5 @@
-#ifndef BASE_HPP
-# define BASE_HPP
+#ifndef BASEH_HPP
+# define BASEH_HPP
 
 //-------------------- Constants -------------------------------------------//
 # ifndef SUC
@@ -41,10 +41,13 @@
 # include <cmath>
 # include <cstdlib>
 # include <limits.h>
+#include <cstdint>
 
 //-------------------- Classes  ---------------------------------------------//
-# include "funcs.hpp"
-# include "ScalarConverter.hpp"
+# include "Base.hpp"
+# include "A.hpp"
+# include "B.hpp"
+# include "C.hpp"
 //-------------------- Aesthetics -------------------------------------------//
 # include "colors.hpp"
 //-------------------- My funcs proto ---------------------------------------//

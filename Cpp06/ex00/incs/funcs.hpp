@@ -1,22 +1,15 @@
 #include "../incs/base.hpp"
 
-#ifndef FUNCS_H
-# define FUNCS_H
+#ifndef CONVERTFUNCS_H
+# define CONVERTFUNCS_H
 
-double	myPower(int nb, int power);
+double		powerOfTen(int power);
 
-void draw_spaces(int nb);
+long double strToLd(std::string &str);
 
+char 		ldToA(long double nb);
 
-bool	isOnlyNumeric(std::string str);
-
-
-bool	checkIntOverflow(std::string line);
-
-
-bool	checkIntUnderflow(std::string line);
-
-
+void		convertAndDisplay(long double nb);
 
 # endif
 

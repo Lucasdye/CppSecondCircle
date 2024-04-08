@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucasbouguet <lucasbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2004/04/20 17:44:20 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/04/05 16:48:55 by lbouguet         ###   ########.fr       */
+/*   Created: 08/04/2024 09:37:57 by lucasbouguet          #+#    #+#             */
+/*   Updated: 08/04/2024 09:37:57 by lucasbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-# define SCALARCONVERTER_HPP
+#ifndef SERIALIZER_HPP
+# define SERIALIZER_HPP
 
 #include "base.hpp"
 
-class ScalarConverter
+typedef struct s_Data
+{
+	int		a;
+	char	b;
+	float	c;
+	double	d;
+
+}				Data;
+
+
+class Serializer
 {
 private:
 
@@ -23,17 +33,15 @@ private:
 
 public:
 	//-------------------- funcs --------------------------------------------//
-	static void convert(std::string &str);
-	// bool checkIntOverflow(std::string &line);
-	// bool checkIntUnderflow(std::string line);
-	// bool isOnlyNumeric(std::string &str);
+	static uintptr_t serialize(Data* ptr);
+	static Data* deserialize(uintptr_t raw);
 	//-------------------- Set/get ------------------------------------------//
 	//-------------------- Constructor/Destructor ---------------------------//
-    ScalarConverter();
-    ScalarConverter(ScalarConverter const & src);
-    virtual ~ScalarConverter() = 0;
+    Serializer();
+    Serializer(Serializer const & src);
+    virtual ~Serializer() = 0;
 	//-------------------- Operators ----------------------------------------//
-    ScalarConverter& operator=(ScalarConverter const & instance);
+    Serializer& operator=(Serializer const & instance);
 
 };
 
