@@ -1,11 +1,22 @@
-#include "../incs/base.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/11 15:23:46 by lbouguet          #+#    #+#             */
+/*   Updated: 2024/04/11 15:24:14 by lbouguet         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../incs/funcsTemplate.hpp"
 
 int main()
 {
 	{
 	int a = 5;
 	int b = 10;
-
 
 	std::cout << "a was: " << a << std::endl;
 	std::cout << "b was: " << b << std::endl;
@@ -20,8 +31,7 @@ int main()
 	std::cout << std::endl;
 	std::string a = "Hello";
 	std::string b = "Ciao";
-
-
+	
 	std::cout << "a was: " << a << std::endl;
 	std::cout << "b was: " << b << std::endl;
 	swap(a, b);
@@ -36,7 +46,6 @@ int main()
 	std::cout << std::endl;
 	float a = 1.5;
 	float b = 3.45;
-
 
 	std::cout << "a was: " << a << std::endl;
 	std::cout << "b was: " << b << std::endl;

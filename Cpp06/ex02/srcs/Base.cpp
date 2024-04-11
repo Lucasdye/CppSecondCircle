@@ -10,7 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/baseH.hpp"
+# include "../incs/Base.hpp"
+# include "../incs/A.hpp"
+# include "../incs/B.hpp"
+# include "../incs/C.hpp"
 
 //-------------------- funcs ------------------------------------------------//
 Base *Base::generate(void)

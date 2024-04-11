@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "../incs/Serializer.hpp"
+# include <iostream>
+# include <string>
 
 int	main()
 {

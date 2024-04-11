@@ -13,13 +13,14 @@
 #ifndef A_HPP
 # define A_HPP
 
-#include "baseH.hpp"
+# include <iostream>
+# include "Base.hpp"
+
+class Base;
 
 class A: public Base
 {
 	private:
-
-
 
 	public:
 		//-------------------- funcs --------------------------------------------//
