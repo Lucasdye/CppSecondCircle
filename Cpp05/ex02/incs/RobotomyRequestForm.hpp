@@ -13,7 +13,23 @@
 #ifndef ROBOTOMYREQUESTFORM_HPP
 # define ROBOTOMYREQUESTFORM_HPP
 
-#include "base.hpp"
+//----- Constants
+# include "colors.hpp"
+# ifndef SUC
+#  define SUC 0
+# endif
+# ifndef ERR
+#  define ERR -1
+# endif
+
+//----- Class headers
+# include "AForm.hpp" 
+# include "Bureaucrat.hpp"
+
+//----- Cpp library headers
+# include <iostream>
+# include <string>
+# include <cstdlib>
 
 class RobotomyRequestForm : public AForm
 {

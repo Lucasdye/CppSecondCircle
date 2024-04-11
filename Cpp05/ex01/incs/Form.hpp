@@ -13,7 +13,20 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
-#include "base.hpp"
+//----- Constants
+# include "colors.hpp"
+# ifndef SUC
+#  define SUC 0
+# endif
+# ifndef ERR
+#  define ERR -1
+# endif
+
+//----- Class headers
+# include "Bureaucrat.hpp"
+
+//----- CPP library headers
+# include <string>
 
 class Bureaucrat;
 
@@ -34,12 +47,12 @@ class Form
 		int					getExecGrade() const;
 		bool				getIsSigned() const;
 		//-------------------- Constructor/Destructor ---------------------------//
-	    Form();
-	   	Form(Form const & src);
-		Form(std::string name, int signGrade, int execGrade);
-	    ~Form();
+	    					Form();
+	   						Form(Form const & src);
+							Form(std::string name, int signGrade, int execGrade);
+	    					~Form();
 		//-------------------- Operators ----------------------------------------//
-	    Form& operator=(Form const & instance);
+	    Form& 				operator=(Form const & instance);
 		//-------------------- Exceptions ---------------------------------------//
 		class	GradeTooHighException: public std::exception
 		{

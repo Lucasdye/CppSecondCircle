@@ -6,11 +6,12 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2029/03/20 10:54:43 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/04/02 14:11:09 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:44:13 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/base.hpp"
+# include <fstream>
+# include "../incs/Bureaucrat.hpp"
 
 int	main()
 {
@@ -28,6 +29,7 @@ int	main()
 	try
 	{
 		Bureaucrat Beatrice = Bureaucrat("Beatrice", -1);
+
 	}
 	catch(const std::exception& e)
 	{

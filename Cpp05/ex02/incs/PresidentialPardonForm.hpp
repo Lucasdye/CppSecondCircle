@@ -13,10 +13,22 @@
 #ifndef PRESIDENTIALPARDONFORM_HPP
 # define PRESIDENTIALPARDONFORM_HPP
 
-#include "base.hpp"
+//----- Constants
+# ifndef SUC
+#  define SUC 0
+# endif
+# ifndef ERR
+#  define ERR -1
+# endif
+# include "colors.hpp"
 
-class AForm;
-class Bureaucrat;
+//----- Class headers
+# include "AForm.hpp" 
+# include "Bureaucrat.hpp"
+
+//----- Class library headers
+# include <iostream>
+# include <string>
 
 class PresidentialPardonForm : public AForm
 {

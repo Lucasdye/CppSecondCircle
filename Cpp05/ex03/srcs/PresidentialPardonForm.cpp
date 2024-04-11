@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/base.hpp"
+#include "../incs/PresidentialPardonForm.hpp"
 
 //-------------------- funcs ------------------------------------------------//
 void	PresidentialPardonForm::execute(Bureaucrat const &executor) const

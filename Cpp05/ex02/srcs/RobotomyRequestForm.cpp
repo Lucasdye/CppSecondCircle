@@ -20,8 +20,9 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 		AForm::execute(executor);
 		srand(static_cast<unsigned int>(time(0)));
 		int rdmNumb = rand() % 101;
+		std::cout << BOLD << "TRRrrrRRrrrRRrrrrrrrRRRRRRRRRrrRR" << END_C << std::endl;
 		if (rdmNumb < 50)
-			std::cout << BOLD << "TRRrrrRRrrrRRrrrrrrrRRRRRRRRRrrRR" << END_C << std::endl;
+			std::cout << BOLD << "Robotomy has succeeded" << END_C << std::endl;
 		else 
 			std::cout << BOLD << "Robotomy has failed" << END_C << std::endl;
 	}
@@ -31,10 +32,18 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 }
 
 //-------------------- Operators --------------------------------------------//
+RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm const & instance)
+{
+	std::cout << ITALIC <<  "Assignment operator called for RobotomyRequestForm " << AForm::getName() << END_C << std::endl;
+	if (this != &instance)
+	{	
+		AForm::operator=(instance);
+	}
+	return *this;
+}
 
 //-------------------- Set/Get ----------------------------------------------//
 //********************* In Abstract *****************************************//
-
 //-------------------- Constructor/Destructor -------------------------------//
 RobotomyRequestForm::RobotomyRequestForm() : AForm()
 {
@@ -54,15 +63,6 @@ RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & src): AForm
 	return ;
 }
 
-RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm const & instance)
-{
-	std::cout << ITALIC <<  "Assignment operator called for RobotomyRequestForm " << AForm::getName() << END_C << std::endl;
-	if (this != &instance)
-	{	
-		AForm::operator=(instance);
-	}
-	return *this;
-}
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {

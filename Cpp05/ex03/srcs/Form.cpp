@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/base.hpp"
+#include "../incs/Form.hpp"
 
 //-------------------- funcs ------------------------------------------------//
 void	Form::beSigned(Bureaucrat& bur)
@@ -60,6 +60,14 @@ Form::Form(): _name("noNameForm"), _isSigned(0), _signGrade(1), _execGrade(1)
 Form::Form(std::string name, int signGrade, int execGrade): _name(name), _isSigned(false), _signGrade(signGrade), _execGrade(execGrade)
 {
 	std::cout << ITALIC << "Parametric constructor called for Form " << _name << END_C << std::endl;
+	if (_signGrade > 150)
+		throw Form::GradeTooLowException();
+	else if (_signGrade < 1)
+		throw Form::GradeTooHighException();
+	if (_execGrade > 150)
+		throw Form::GradeTooLowException();
+	else if (_execGrade < 1)
+		throw Form::GradeTooHighException();
 	return ;
 }
 

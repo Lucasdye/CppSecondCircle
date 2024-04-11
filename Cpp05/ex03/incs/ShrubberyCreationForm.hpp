@@ -10,12 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
 
 #ifndef SHRUBBERYCREATIONFORM_HPP
 # define SHRUBBERYCREATIONFORM_HPP
 
-#include "base.hpp"
+//----- Constants
+# include "colors.hpp"
+# ifndef SUC
+#  define SUC 0
+# endif
+
+# ifndef ERR
+#  define ERR -1
+# endif
+//----- Class headers
+# include "Form.hpp" 
+# include "Bureaucrat.hpp"
+
+//----- CPP library headers
+# include <iostream>
+# include <fstream>
+# include <string>
 
 class ShrubberyCreationForm : public Form
 {

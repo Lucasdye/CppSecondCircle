@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/base.hpp"
+#include "../incs/PresidentialPardonForm.hpp"
 
 //-------------------- funcs ------------------------------------------------//
 void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
@@ -57,7 +57,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 //-------------------- Operators --------------------------------------------//
 PresidentialPardonForm&	PresidentialPardonForm::operator=(PresidentialPardonForm const & instance)
 {
-	std::cout << ITALIC <<"Assignment operator called for PresidentialPardonForm" << getName() << END_C << std::endl;
+	std::cout << ITALIC << "Assignment operator called for PresidentialPardonForm" << getName() << END_C << std::endl;
 	if (this != &instance)
 	{
 		AForm::operator=(instance);

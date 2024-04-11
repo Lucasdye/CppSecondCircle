@@ -13,9 +13,24 @@
 #ifndef SHRUBBERYCREATIONFORM_HPP
 # define SHRUBBERYCREATIONFORM_HPP
 
-#include "base.hpp"
+//----- Constants
+# ifndef SUC
+#  define SUC 0
+# endif
+# ifndef ERR
+#  define ERR -1
+# endif
+# include "colors.hpp"
 
-class AForm;
+//----- Class headers
+# include "AForm.hpp" 
+# include "Bureaucrat.hpp"
+
+//----- Cpp library headers
+# include <iostream>
+# include <fstream>
+# include <string>
+
 
 class ShrubberyCreationForm : public AForm
 {

@@ -6,11 +6,21 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2029/03/20 10:54:43 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/04/04 16:49:06 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/04/10 16:54:55 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/base.hpp"
+//----- Class headers
+#include "../incs/Bureaucrat.hpp"
+#include "../incs/PresidentialPardonForm.hpp"
+#include "../incs/RobotomyRequestForm.hpp"
+#include "../incs/ShrubberyCreationForm.hpp"
+#include "../incs/Form.hpp"
+#include "../incs/Intern.hpp"
+
+//----- CPP library headers
+#include <string>
+#include <iostream>
 
 int	main()
 {
@@ -61,7 +71,7 @@ int	main()
 			Alphonse.executeForm(*rrf);
 		}
 	}
-	
+	return (SUC);
 }	
 
 

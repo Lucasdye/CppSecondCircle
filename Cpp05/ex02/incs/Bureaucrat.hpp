@@ -6,14 +6,28 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2029/03/20 10:54:43 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/04/02 17:29:12 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/04/10 16:58:04 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-#include "base.hpp"
+//----- Constants
+# ifndef SUC
+#  define SUC 0
+# endif
+# ifndef ERR
+#  define ERR -1
+# endif
+# include "colors.hpp"
+
+//----- Class headers
+# include "AForm.hpp"
+
+//----- Cpp library headers
+# include <string>
+# include <iostream>
 
 class AForm;
 

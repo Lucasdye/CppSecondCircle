@@ -6,17 +6,16 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2029/03/20 10:54:43 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/03/29 17:59:19 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/04/11 14:17:49 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/Bureaucrat.hpp"
+# include "../incs/Bureaucrat.hpp"
 
 //-------------------- funcs ------------------------------------------------//
 void	Bureaucrat::decrGrade()
 {
-	// No int overdeflow or overflow check needed (thanks to constructors)
-	std::cout << ITALIC << "Incrementing " << _name << "'s gade" << END_C << std::endl;
+	std::cout << ITALIC << "Decrementing " << _name << "'s gade" << END_C << std::endl;
 	if (_grade + 1 > 150)
 		throw Bureaucrat::GradeTooLowException();
 	else
@@ -26,8 +25,7 @@ void	Bureaucrat::decrGrade()
 
 void	Bureaucrat::incrGrade()
 {
-	// No int undeflow or overflow check needed (thanks to constructors)
-	std::cout << ITALIC << "Decrementing " << _name << "'s gade" << END_C << std::endl;
+	std::cout << ITALIC << "Incrementing " << _name << "'s gade" << END_C << std::endl;
 	if (_grade - 1 < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else
@@ -37,10 +35,10 @@ void	Bureaucrat::incrGrade()
 
 void	Bureaucrat::signForm(Form& f)
 {
-	if (_grade != f.getSignGrade())
-		std::cout << _name <<  " couldn’t sign " << f.getName() << ". " << std::endl;
+	if (_grade > f.getSignGrade())
+		std::cout << BOLD << _name <<  " couldn’t sign " << f.getName() << ". " << std::endl;
 	else
-		std::cout << BLUE << BOLD << "Bureaucrat " << _name << " signed " <<  f.getName() << END_C <<std::endl;
+		std::cout << BOLD << "Bureaucrat " << _name << " signed " <<  f.getName() << END_C <<std::endl;
 	f.beSigned(*this);
 	return ;
 } 

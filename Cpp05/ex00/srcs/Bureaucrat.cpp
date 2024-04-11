@@ -6,7 +6,7 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2029/03/20 10:54:43 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/03/29 17:59:19 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/04/11 14:17:30 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 //-------------------- funcs ------------------------------------------------//
 void	Bureaucrat::decrGrade()
 {
-	// No int overdeflow or overflow check needed (thanks to constructors)
-	std::cout << ITALIC << "Incrementing " << _name << "'s gade" << END_C << std::endl;
+	std::cout << ITALIC << "Decrementing " << _name << "'s gade" << END_C << std::endl;
 	if (_grade + 1 > 150)
 		throw Bureaucrat::GradeTooLowException();
 	else
@@ -26,8 +25,7 @@ void	Bureaucrat::decrGrade()
 
 void	Bureaucrat::incrGrade()
 {
-	// No int undeflow or overflow check needed (thanks to constructors)
-	std::cout << ITALIC << "Decrementing " << _name << "'s gade" << END_C << std::endl;
+	std::cout << ITALIC << "Incrementing " << _name << "'s gade" << END_C << std::endl;
 	if (_grade - 1 < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else
@@ -69,10 +67,9 @@ Bureaucrat::Bureaucrat() : _name(""), _grade(150)
 	return ;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &src)
+Bureaucrat::Bureaucrat(Bureaucrat const &src): _name(src._name)
 {
 	std::cout << ITALIC << "Copy constructor called for Bureaucrat " << _name << END_C << std::endl;
-	_name = src._name;
 	_grade = src._grade;
 	return ;
 }
@@ -82,15 +79,13 @@ Bureaucrat::~Bureaucrat()
 	std::cout << ITALIC << "Destructor called for Bureaucrat " << _name << END_C << std::endl;
 	return ;
 }
+
 //-------------------- Operators --------------------------------------------//
 Bureaucrat&	Bureaucrat::operator=(Bureaucrat const & instance)
 {
 	std::cout << "Assignment operator called for Bureaucrat " << _name << std::endl;
 	if (this != &instance)
-	{
-		_name = instance._name;
 		_grade = instance._grade;
-	}
 	return *this;
 }
 
@@ -101,7 +96,6 @@ std::ostream&   operator<<(std::ostream& out, const Bureaucrat& inst)
 }
 
 //-------------------- Exceptions -------------------------------------------//
-
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("The grade's too high");

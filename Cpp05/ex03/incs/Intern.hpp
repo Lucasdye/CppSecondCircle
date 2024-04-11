@@ -6,16 +6,31 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2002/04/20 19:42:09 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/04/05 14:38:19 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/04/10 16:54:21 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#pragma once
 
 #ifndef INTERN_HPP
 # define INTERN_HPP
 
-#include "base.hpp"
+//----- Constants
+# include "colors.hpp"
+# ifndef SUC
+#  define SUC 0
+# endif
+# ifndef ERR
+#  define ERR -1
+# endif
+
+//----- Class headers
+# include "Form.hpp" 
+# include "Bureaucrat.hpp"
+# include "PresidentialPardonForm.hpp"
+# include "RobotomyRequestForm.hpp"
+# include "ShrubberyCreationForm.hpp"
+
+//----- CPP library headers
+# include <string>
 
 class Intern
 {

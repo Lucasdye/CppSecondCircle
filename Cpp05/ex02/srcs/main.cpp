@@ -6,12 +6,18 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2029/03/20 10:54:43 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/04/02 19:23:11 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/04/10 16:45:38 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/base.hpp"
+#include "../incs/Bureaucrat.hpp"
+#include "../incs/PresidentialPardonForm.hpp"
+#include "../incs/RobotomyRequestForm.hpp"
+#include "../incs/ShrubberyCreationForm.hpp"
+#include "../incs/AForm.hpp"
 
+#include <string>
+#include <iostream>
 
 int	main()
 {
@@ -25,7 +31,6 @@ int	main()
 		//---------- Alphonse tries to execute a non signed form.
 		for (int i = 0; i < 2; i++)
 		{	
-			
 			try 
 			{
 				Shrubb.execute(Alphonse);
@@ -44,7 +49,7 @@ int	main()
 				std::cerr << YELLOW << BOLD <<  e.what() << " to sign" <<END_C <<  std::endl;
 			}
 		}
-		//---------- Now that Shrubb for is signed, let's try to execute it with an undergraded bureaucrat
+		//---------- Now that Shrubb is signed, let's try to execute it with an undergraded bureaucrat
 		Bureaucrat	Beatrice("Beatrice", 145);
 		try 
 		{
@@ -66,7 +71,7 @@ int	main()
 		}
 		//----------  executeForm() by a valide graded Bureaucrat
 		Bureaucrat	David("David", 137);
-			try 
+		try 
 		{
 			David.executeForm(Shrubb);
 		}

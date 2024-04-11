@@ -10,14 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#pragma once
-
 #ifndef PRESIDENTIALPARDONFORM_HPP
 # define PRESIDENTIALPARDONFORM_HPP
 
-#include "base.hpp"
+//----- Constants
+# ifndef SUC
+#  define SUC 0
+# endif
 
+# ifndef ERR
+#  define ERR -1
+# endif
+
+//----- Class headers
+# include "colors.hpp"
+# include "Form.hpp"
+# include "Bureaucrat.hpp"
+
+//----- CPP library headers
+# include <iostream>
+# include <string>
 
 class PresidentialPardonForm : public Form
 {

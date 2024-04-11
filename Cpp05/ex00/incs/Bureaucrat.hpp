@@ -6,23 +6,33 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2029/03/20 10:54:43 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/03/29 17:35:42 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/04/11 14:09:20 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-#include "base.hpp"
+//----- Constants
+# include "colors.hpp"
+# ifndef SUC
+#  define SUC 0
+# endif
+# ifndef ERR
+#  define ERR -1
+# endif
+
+//----- Cpp library headers
+# include <iostream>
+# include <exception>
 
 class Bureaucrat
 {
 	private:
-		std::string _name;
-		int 		_grade;
+		std::string const	_name;
+		int					_grade;
 
 	public:
-
 		//-------------------- funcs ----------------------------------------//
 		void					incrGrade();
 		void					decrGrade();
@@ -47,12 +57,12 @@ class Bureaucrat
 				//------------ funcs -----------//
 				virtual const char* what() const throw();// the throw() indicated that this method shouldn't throw any exceptions !
 		};
-		
+
 		class	GradeTooLowException: public std::exception
 		{
 			public :
 				//------------ funcs -----------//
-				virtual const char* what() const throw();
+				virtual const char* what() const throw();// the throw() indicated that this method shouldn't throw any exceptions !
 		};
 };
 

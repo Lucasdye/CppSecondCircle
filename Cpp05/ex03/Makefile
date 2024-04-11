@@ -38,10 +38,14 @@ $(OBJ_DIR):
 clean:
 	@echo "$(YELLOW)Cleaning up...$(RESET)"
 	@rm -rf $(OBJ_DIR)
+	@rm -rf ./courtyard_shrubbery
+
 
 fclean: clean
 	@echo "$(YELLOW)Full clean...$(RESET)"
 	@rm -rf $(NAME)
+	@rm -rf ./courtyard_shrubbery
+
 
 re: fclean all
 

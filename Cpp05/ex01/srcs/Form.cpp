@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/base.hpp"
+#include "../incs/Form.hpp"
 
 //-------------------- funcs ------------------------------------------------//
 void	Form::beSigned(Bureaucrat& bur)
@@ -43,22 +43,29 @@ bool				Form::getIsSigned() const
 }
 
 //-------------------- Constructor/Destructor -------------------------------//
-Form::Form(): _name("noNameForm"), _isSigned(0), _signGrade(1), _execGrade(1)
+Form::Form(): _name("noNameForm"), _isSigned(false), _signGrade(1), _execGrade(1)
 {
 	std::cout << "Default constructor called for Form" << std::endl;
 	return ;
 }
 
-Form::Form(std::string name, int signGrade, int execGrade): _name(name), _isSigned(false), _signGrade(signGrade), _execGrade(execGrade)
+Form::Form(std::string name, int signGrade, int execGrade): _name(name), _isSigned(false), _signGrade(signGrade), _execGrade(signGrade)
 {
 	std::cout << "Parametric constructor called for Form" << std::endl;
+	if (_signGrade > 150)
+		throw Form::GradeTooLowException();
+	else if (_signGrade < 1)
+		throw Form::GradeTooHighException();
+	if (_execGrade > 150)
+		throw Form::GradeTooLowException();
+	else if (_execGrade < 1)
+		throw Form::GradeTooHighException();
 	return ;
 }
 
-Form::Form(Form const & src): _name(""), _isSigned(false), _signGrade(1), _execGrade(1)
+Form::Form(Form const& src): _name(src._name), _isSigned(src._isSigned), _signGrade(src._signGrade), _execGrade(src._execGrade)
 {
 	std::cout << "Copy constructor called for Form" << std::endl;
-	*this = src;
 	return ;
 }
 
@@ -67,6 +74,7 @@ Form::~Form()
 	std::cout << "Destructor called for Form" << std::endl;
 	return ;
 }
+
 //-------------------- Exceptions -------------------------------------------//
 const char	*Form::GradeTooHighException::what() const throw()
 {
@@ -78,20 +86,14 @@ const char	*Form::GradeTooLowException::what() const throw()
 	return ("The grade's too low");
 }
 
-//Form::Form(Form const & src): _name(""), _isSigned(0), _signGrade(1), _execGrade(1)
-// {
-// 	std::cout << "Copy constructor called for Form" << std::endl;
-// 	*this = src;
-// 	return ;
-//}
 //-------------------- Operators --------------------------------------------//
-
 std::ostream&   operator<<(std::ostream& out, const Form& inst)
 {
 	out << BOLD << "Form " << inst.getName() << " signing" << "'s grade's " <<  inst.getSignGrade() << " and execution's grade's " << inst.getExecGrade() << "." << std::endl << "This form statu's " << inst.getIsSigned() << "." <<END_C << std::endl;
 	return (out);
 }
-Form&	Form::operator=(Form const & instance)
+
+Form&	Form::operator=(Form const& instance)
 {
 	std::cout << "Assignment operator called for Form" << std::endl;
 	if (this != &instance)
