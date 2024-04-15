@@ -1,9 +1,9 @@
-NAME = usingTemplate
+NAME = ContainersPrg
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ_DIR = objs/
 
-SRC =	srcs/main.cpp
+SRC =	srcs/mainVector.cpp srcs/FindException.cpp
 
 OBJ = $(addprefix $(OBJ_DIR), $(notdir $(SRC:.cpp=.o)))
 
