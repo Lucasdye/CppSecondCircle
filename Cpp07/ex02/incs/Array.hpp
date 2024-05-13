@@ -6,7 +6,7 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2011/04/20 15:48:35 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/04/11 18:06:14 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/04/16 17:00:44 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 // #  define BOLD "\033[1m"
 // # endif
 
-// # ifndef ITALIC
-// #  define ITALIC "\033[3m"
-// # endif
+# ifndef ITALIC
+#  define ITALIC "\033[3m"
+# endif
 
 // # ifndef UNDERLINE
 // #  define UNDERLINE "\033[4m"
@@ -49,22 +49,22 @@
 // #  define CYAN "\033[36m"
 // # endif
 
-// # ifndef END_C
-// #  define END_C "\033[0m"
-// # endif
+# ifndef END_C
+#  define END_C "\033[0m"
+# endif
 
-// # ifndef SUC
-// #  define SUC 0
-// # endif
+# ifndef SUC
+#  define SUC 0
+# endif
 
-// # ifndef ERR
-// #  define ERR -1
-// # endif
+# ifndef ERR
+#  define ERR -1
+# endif
 
-#include <iostream>
-#include <string>
-#include <cstdlib>
-#include <limits.h>
+# include <iostream>
+# include <string>
+# include <cstdlib>
+# include <limits.h>
 
 template <typename T>
 class Array
@@ -74,34 +74,51 @@ class Array
 		unsigned int	_size;
 	
 	public:
-	    Array();
-	    Array(unsigned int n);
-	    Array(Array const & src);
-	    Array& operator=(Array const & instance);
-	    T& operator[](unsigned int idx);
-		unsigned int size();
-	    ~Array();
-		
-		class OutOfBoundIdx: public std::exception
-		{
-			public :
-				virtual const char *what() const throw();
-		};
-		
-		class	NullNew: public std::exception
-		{
-			public :
-				virtual const char *what() const throw();
-		};
+		//-------------------- funcs --------------------------------------------//
+			unsigned int size();
+		//-------------------- Set/get ------------------------------------------//
+		//-------------------- Constructor/Destructor ---------------------------//
+	    				Array();
+	    				Array(unsigned int n);
+	    				Array(Array const& src);
+	    				~Array();
+		//-------------------- Operators ----------------------------------------//
+	   		Array&		operator=(Array const & instance);
+	    	T& 			operator[](unsigned int idx);
+		//-------------------- Exceptions ---------------------------------------//
+			class ArrayExceptions: public std::exception
+			{
+				private:
+					const std::string _errMsg;
+				
+				public:
+					virtual const char *what() const throw();
+										ArrayExceptions(const std::string errMsg);
+										ArrayExceptions();
+										~ArrayExceptions() throw();
+			};
 
-		class	TooHighNew: public std::exception
-		{
-			public :
-				virtual const char *what() const throw();
-		};
+		
+		// class OutOfBoundIdx: public std::exception
+		// {
+		// 	public :
+		// 		virtual const char *what() const throw();
+		// };
+		
+		// class	NullNew: public std::exception
+		// {
+		// 	public :
+		// 		virtual const char *what() const throw();
+		// };
+
+		// class	TooHighNew: public std::exception
+		// {
+		// 	public :
+		// 		virtual const char *what() const throw();
+		// };
 	
 };
 
-# include "../srcs/Array.tpp"
+# include "Array.tpp"
 #endif
 

@@ -49,7 +49,7 @@ Form::Form(): _name("noNameForm"), _isSigned(false), _signGrade(1), _execGrade(1
 	return ;
 }
 
-Form::Form(std::string name, int signGrade, int execGrade): _name(name), _isSigned(false), _signGrade(signGrade), _execGrade(signGrade)
+Form::Form(std::string name, int signGrade, int execGrade): _name(name), _isSigned(false), _signGrade(signGrade), _execGrade(execGrade)
 {
 	std::cout << "Parametric constructor called for Form" << std::endl;
 	if (_signGrade > 150)

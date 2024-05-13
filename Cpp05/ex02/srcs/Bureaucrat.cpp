@@ -6,7 +6,7 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2029/03/20 10:54:43 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/04/11 14:18:06 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/04/16 10:07:50 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ Bureaucrat::Bureaucrat() : _name(""), _grade(150)
 Bureaucrat::Bureaucrat(Bureaucrat const &src)
 {
 	std::cout << ITALIC << "Copy constructor called for Bureaucrat " << _name << END_C << std::endl;
-	_name = src._name;
 	_grade = src._grade;
 	return ;
 }
@@ -109,7 +108,6 @@ Bureaucrat&	Bureaucrat::operator=(Bureaucrat const & instance)
 	std::cout << "Assignment operator called for Bureaucrat " << _name << std::endl;
 	if (this != &instance)
 	{
-		_name = instance._name;
 		_grade = instance._grade;
 	}
 	return *this;

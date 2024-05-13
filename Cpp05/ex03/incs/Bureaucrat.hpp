@@ -6,7 +6,7 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2029/03/20 10:54:43 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/04/10 16:54:12 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/04/16 10:06:32 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ class Form;
 class Bureaucrat
 {
 	private:
-		std::string _name;
-		int 		_grade;
+		const std::string 	_name;
+		int 				_grade;
 
 	public:
 

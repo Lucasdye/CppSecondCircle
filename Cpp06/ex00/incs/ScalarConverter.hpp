@@ -6,7 +6,7 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2004/04/20 17:44:20 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/04/10 18:34:04 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:14:04 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,34 +64,11 @@
 #  define ERR -1
 # endif
 
-//----- Value Constants
-# ifndef FLOAT_MAX
-#  define FLOAT_MAX 3.4028235e38f
-# endif
-# ifndef FLOAT_MIN
-#  define FLOAT_MIN 1.17549435e-38f
-# endif
-# ifndef FLOAT_TRUE_MIN
-#  define FLOAT_TRUE_MIN 1.40129846432481707e-45f
-# endif
-
-# ifndef DOUBLE_MAX
-#  define DOUBLE_MAX 1.7976931348623157e+308
-# endif
-
-# ifndef DOUBLE_MIN
-#  define DOUBLE_MIN 2.2250738585072014e-308
-# endif
-
-# ifndef DOUBLE_TRUE_MIN
-#  define DOUBLE_TRUE_MIN 4.9406564584124654e-324
-# endif
-
 //----- Cpp library
 # include <iostream>
 # include <string>
 # include <iomanip>
-# include <limits.h>
+# include <limits>
 
 //----- Funcs prototype
 long double strToLd(std::string &str);

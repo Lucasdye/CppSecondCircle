@@ -36,7 +36,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 						"\t                     @\\||||||@\n"
 						"\t                      \\///\\\\\\\n"
 
-						 << std::endl; // Example, replace with actual ASCII art
+						 << std::endl;
     	    outfile.close();
 			std::cout << BOLD << "The Form " << AForm::getName() << " was successfully executed by " << executor.getName() << END_C << std::endl;
     	}

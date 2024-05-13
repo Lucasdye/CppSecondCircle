@@ -63,30 +63,6 @@
 #  define ERR -1
 # endif
 
-# ifndef FLOAT_MAX
-#  define FLOAT_MAX 3.4028235e38f
-# endif
-
-# ifndef FLOAT_MIN
-#  define FLOAT_MIN 1.17549435e-38f
-# endif
-
-# ifndef FLOAT_TRUE_MIN
-#  define FLOAT_TRUE_MIN 1.40129846432481707e-45f
-# endif
-
-# ifndef DOUBLE_MAX
-#  define DOUBLE_MAX 1.7976931348623157e+308
-# endif
-
-# ifndef DOUBLE_MIN
-#  define DOUBLE_MIN 2.2250738585072014e-308
-# endif
-
-# ifndef DOUBLE_TRUE_MIN
-#  define DOUBLE_TRUE_MIN 4.9406564584124654e-324
-# endif
-
 //----- Cpp library
 # include <stdint.h>
 # include <iostream>
@@ -103,7 +79,7 @@ typedef struct s_Data
 class Serializer
 {
 	private:
-
+	    Serializer(void);
 
 	public:
 		//-------------------- funcs --------------------------------------------//
@@ -111,9 +87,8 @@ class Serializer
 		static Data*		deserialize(uintptr_t raw);
 		//-------------------- Set/get ------------------------------------------//
 		//-------------------- Constructor/Destructor ---------------------------//
-	    Serializer();
 	    Serializer(Serializer const & src);
-	    virtual ~Serializer() = 0;
+	    virtual ~Serializer();
 		//-------------------- Operators ----------------------------------------//
 	    Serializer& operator=(Serializer const & instance);
 };

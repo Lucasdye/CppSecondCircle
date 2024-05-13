@@ -49,7 +49,6 @@ bool				AForm::getIsSigned() const
 	return (_isSigned);
 }
 
-
 //-------------------- Constructor/Destructor -------------------------------//
 AForm::AForm(): _name("noNameAForm"), _isSigned(0), _signGrade(1), _execGrade(1)
 {
