@@ -6,7 +6,7 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2029/03/20 10:54:43 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/04/10 15:44:13 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/05/14 17:18:16 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main()
 	{
 		std::cerr << YELLOW << BOLD <<  e.what() << END_C <<  std::endl;
 	}
+	
 	//---------- Too Low grade initialization
 	try
 	{

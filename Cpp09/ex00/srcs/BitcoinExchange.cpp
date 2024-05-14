@@ -12,21 +12,26 @@ BitcoinExchange::BitcoinExchange(BitcoinExchange const &inst)
 	_fileName = inst._fileName;
 }
 
+BitcoinExchange::~BitcoinExchange()
+{
+	std::cout << ITALIC << "Default constructor called for BitcoinExchange" << END_C << std::endl;
+	_ifs.close();
+}
+
 //-------------------- Set/Get ----------------------------------------------//
 //-------------------- funcs ------------------------------------------------//
 bool		BitcoinExchange::openFile(std::string fileNam)
 {
-	try()
-	{
-		_ifs.open(fileNam, std::ifstream::in);// enume, defines how the file should be open (read mode)
+	_ifs.open(fileNam, std::ifstream::in);// enume, defines how the file should be open (read mode)
+	if (_ifs.fail())
+	{	
+		throw BitcoinExchange::Exception(std::string(RED) + "The file couldn't be open" + END_C);
+		return (true);
 	}
-	catch (std::exception &e)
-	{
-		BitcoinExchange::Exception.what(e);
-	}
+	return (false);
 }
-//-------------------- Operators --------------------------------------------//
 
+//-------------------- Operators --------------------------------------------//
 BitcoinExchange&	BitcoinExchange::operator=(BitcoinExchange const &inst)
 {
 	std::cout << ITALIC << "Copy assignement operator called for Bitcoin Exchange" << END_C << std::endl;
@@ -36,4 +41,9 @@ BitcoinExchange&	BitcoinExchange::operator=(BitcoinExchange const &inst)
 	}
 	return (*this);
 }
+
 //-------------------- Exceptions -------------------------------------------//
+BitcoinExchange::Exception::Exception(std::string errMsg)
+{
+	_errMsg = errMsg;
+}
