@@ -6,7 +6,7 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 15:53:25 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/05/17 12:14:22 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/05/17 14:16:42 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,8 @@ class BitcoinExchange
 		void			readingInputFile();
 		void			outputResult(std::string date, std::string value);
 		time_t			to_time_t(const std::tm& date);// converts date to ms
-		std::string		time_t_to_utc_string(time_t date);
+		//std::string		time_t_to_utc_string(time_t date);
+		std::string		time_t_to_localtime_string(time_t date);
 		//bool 			noAlphabetInDate(std::string &str);
 		//int				compareDates(std::string, )
 		

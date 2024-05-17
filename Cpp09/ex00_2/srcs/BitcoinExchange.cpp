@@ -1,7 +1,7 @@
 # include "../incs/BitcoinExchange.hpp"
 
 //-------------------- Constructor/Destructor -------------------------------//
-BitcoinExchange::BitcoinExchange(): _size(0), _fileName("")
+BitcoinExchange::BitcoinExchange(): _size(0), _sizeIn(0), _fileName("")
 {
 	std::cout << ITALIC << "Default constructor called for Bitcoin Exchange" << END_C << std::endl;
 }
@@ -69,7 +69,7 @@ void		BitcoinExchange::openFileInput(std::string fileNam)
 	//Checking it isn't empty
 	while (std::getline(_ifsInput, line))
 		_sizeIn++;
-	if (!_sizeIn)
+	if (_sizeIn == 0)
 		throw BitcoinExchange::BtcExException(std::string(RED) + "The file " + fileNam + " is empty" + END_C);
 	_ifsInput.clear();
 	_ifsInput.seekg(0, std::ios::beg);
@@ -102,31 +102,34 @@ void		BitcoinExchange::defineMapCsv()
 		if (strptime(strDate.c_str(), "%Y-%m-%d", &tm) == NULL)
 			throw std::invalid_argument("Invalid date format: " + strDate);
 		msDate = to_time_t(tm);
-		char *endptr;
 		strVal = line.substr(line.find(",") + 1);
+		char *endptr;
 		fVal = std::strtof(strVal.c_str(), &endptr);
 		if (*endptr != '\0')
 			throw std::invalid_argument("Invalid value format: " + strVal);
-		std::cout << GREEN << msDate << END_C << std::endl;
+		//std::cout << GREEN << msDate << END_C << std::endl;
 		_csvBtc[msDate] = fVal;
 	}
 	return ;
 }
 
-std::string	BitcoinExchange::time_t_to_utc_string(time_t date)
+std::string BitcoinExchange::time_t_to_localtime_string(time_t date)
 {
-	std::tm* tm_ptr = std::gmtime(&date); // Convert to UTC time
-	if (tm_ptr == NULL)
-	    throw std::runtime_error("Failed to convert time_t to tm");
- 	
-	std::ostringstream oss;
-    oss << (tm_ptr->tm_year + 1900) << '-' // tm_year is years since 1900
-        << std::setw(2) << std::setfill('0') << (tm_ptr->tm_mon + 1) << '-' // tm_mon is months since January (0-11)
-        << std::setw(2) << std::setfill('0') << tm_ptr->tm_mday; // tm_mday is the day of the month (1-31)
+ 	struct tm *tm = localtime(&date);
 
-	
-	//oss << std::put_time(tm_ptr, "%Y-%m-%d");
-	return oss.str();
+    // Check if the conversion was successful
+    if (tm == NULL) {
+        return "";
+    }
+
+    // Define a buffer to hold the formatted date string
+    char dateString[11];  // YYYY-MM-DD is 10 characters long + null terminator
+
+    // Format the date as a string
+    strftime(dateString, sizeof(dateString), "%Y-%m-%d", tm);
+
+    // Return the formatted date string
+    return std::string(dateString);
 }
 
 void		BitcoinExchange::outputResult(std::string date, std::string value)
@@ -151,13 +154,15 @@ void		BitcoinExchange::outputResult(std::string date, std::string value)
 			else if (btcVol > 1000)
 				std::cout << "Error: too large value" << std::endl;
 			else
-			{	
+			{
 				res = _csvBtc[foundDate] * btcVol;
-				strFoundDate = time_t_to_utc_string(foundDate);
+				strFoundDate = time_t_to_localtime_string(foundDate);
 				std::cout << strFoundDate << " => " << value << " = " << res << std::endl;; 
 				//2011-01-03 => 3 = 0.9
-			}	
+			}
 		}
+		else
+			std::cout << "Error: the csv file doesn't go below the given date: " << date << std::endl;
 	}
 	else
 		std::cout << "Error: bad input => " + date << std::endl;
@@ -167,12 +172,12 @@ time_t	BitcoinExchange::findDateInMap(std::time_t date)
 {
 	if (date == -1 || _csvBtc.begin()->first > date)
 	{	
-		std::cout << "Case1" << std::endl;
+		//std::cout << "Case1" << std::endl;
 		return (ERR);
 	}
 	else if (_csvBtc.rbegin()->first <=  date)
 	{
-		std::cout << "Case2" << std::endl;
+		//std::cout << "Case2" << std::endl;
 		return (_csvBtc.rbegin()->first);
 	}
 	else
@@ -196,12 +201,21 @@ void		BitcoinExchange::readingInputFile()
 	std::string line;
 	std::string	inputDate;
 	std::string	inputValue;
+	size_t		pipePos;
 
+	std::getline(_ifsInput, line);
 	while (std::getline(_ifsInput, line))
-	{
-		inputDate = line.substr(0, line.find(" "));
-		inputValue = line.substr(line.find("|") + 1);
-		outputResult(inputDate, inputValue);
+	{	
+		pipePos = line.find("|");
+		if (pipePos == std::string::npos || line[pipePos - 1] != ' '
+			|| line[pipePos + 1] != ' ' || line[pipePos + 2] == ' ' || line[pipePos - 2] == ' ')
+			std::cout << "Error: bad input => " + line << std::endl;
+		else 
+		{	
+			inputDate = line.substr(0, line.find(" "));
+			inputValue = line.substr(line.find("|") + 1);
+			outputResult(inputDate, inputValue);
+		}
 	}
 }
 //-------------------- Operators --------------------------------------------//
