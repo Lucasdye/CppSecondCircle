@@ -1,9 +1,9 @@
-NAME = bureaucrat
+NAME = btc
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ_DIR = objs/
 
-SRC =	srcs/main.cpp srcs/Bureaucrat.cpp
+SRC =	srcs/main.cpp srcs/BitcoinExchange.cpp
 
 OBJ = $(addprefix $(OBJ_DIR), $(notdir $(SRC:.cpp=.o)))
 

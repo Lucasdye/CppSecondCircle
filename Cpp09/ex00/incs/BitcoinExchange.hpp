@@ -10,13 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BITCOINEXCHANGE.HPP
-# define BITCOINEXCHANGE.HPP
-# include <utility>
+#ifndef BITCOINEXCHANGE_HPP
+# define BITCOINEXCHANGE_HPP
+# include <map>
 # include <cstring>
 # include <string>
 # include <iostream>
 # include <fstream>
+# include <stdexcept>
+# include <ctime>
+# include <sstream>
 
 # ifndef BOLD
 #  define BOLD "\033[1m"
@@ -58,33 +61,57 @@
 #  define END_C "\033[0m"
 # endif
 
+# ifndef ERR
+#  define ERR -1
+# endif
+
+# ifndef CSVBTC
+#  define CSVBTC "data.csv"
+# endif
+
 class BitcoinExchange
 {
 	private:
-		std::pair<std::string, float>	_btcDaVa;
-		std::string						_fileName;
-		std::ifstream					_ifs;
+		std::map<time_t, float>					_csvBtc;
+		std::size_t								_size;
+		std::size_t								_sizeIn;
+		std::string								_fileName;
+		std::ifstream							_ifsCsv;     
+		std::ifstream							_ifsInput;     
 
 	public:
 		
 	//-------------------- funcs --------------------------------------------//
-		bool			openFile(std::string fileNam);
+		void			openFileCsv(std::string fileNam);
+		void			openFileInput(std::string fileNam);
+		void			defineMapCsv();
+		void			readingInputFile();
+		void			outputResult(std::string date, std::string value);
+		time_t			to_time_t(const std::tm& date);// converts date to ms
+		std::string		time_t_to_utc_string(time_t date);
+		//bool 			noAlphabetInDate(std::string &str);
+		//int				compareDates(std::string, )
 		
+	time_t				findDateInMap(std::time_t date);
+
 	//-------------------- Set/get ------------------------------------------//
+	const std::ifstream&							getIfsCsv() const;
+	const std::ifstream&							getIfsInput() const;
+	const std::map<time_t, float>&					getCsvBtc() const;
 	//-------------------- Constructor/Destructor ---------------------------//
 						BitcoinExchange();
 						BitcoinExchange(BitcoinExchange const &inst);
 						~BitcoinExchange();
 	//-------------------- Exception ----------------------------------------//
-		class Exception: public std::exception
+		class BtcExException: public std::exception
 		{
 			private:
 				std::string _errMsg;
 			
 			public:
 				virtual const char *what() const throw();
-				Exception(std::string errMsg) {};
-				virtual ~Exception(){};
+				BtcExException(std::string errMsg);
+				virtual ~BtcExException() throw();
 		};
 	
 	//-------------------- Operators ----------------------------------------//
