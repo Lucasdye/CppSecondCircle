@@ -80,6 +80,9 @@ class Serializer
 {
 	private:
 	    Serializer(void);
+	    Serializer(Serializer const & src);
+	    Serializer& operator=(Serializer const & instance);
+	    virtual ~Serializer();
 
 	public:
 		//-------------------- funcs --------------------------------------------//
@@ -87,10 +90,7 @@ class Serializer
 		static Data*		deserialize(uintptr_t raw);
 		//-------------------- Set/get ------------------------------------------//
 		//-------------------- Constructor/Destructor ---------------------------//
-	    Serializer(Serializer const & src);
-	    virtual ~Serializer();
 		//-------------------- Operators ----------------------------------------//
-	    Serializer& operator=(Serializer const & instance);
 };
 
 #endif

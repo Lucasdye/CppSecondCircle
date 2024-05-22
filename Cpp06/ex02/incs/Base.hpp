@@ -6,9 +6,11 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 12:27:26 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/04/11 12:43:23 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/05/22 15:03:49 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #ifndef BASE_HPP
 # define BASE_HPP
@@ -61,31 +63,13 @@
 #  define END_C "\033[0m"
 # endif
 
-# include <iostream>
-# include <cstdlib>
-# include <ctime>
-# include <typeinfo>
-
-class A;
-class B;
-class C;
 
 class Base
 {
-	private:
-
-	public:
-		//-------------------- funcs --------------------------------------------//
-		Base *generate(void);
-		void identify(Base* p);
-		void identify(Base& p);
-		//-------------------- Set/get ------------------------------------------//
-		//-------------------- Constructor/Destructor ---------------------------//
-	   	Base();
-	   	Base(Base const & src);
-	    virtual ~Base();
-		//-------------------- Operators ----------------------------------------//
-	   	Base& operator=(Base const & instance);
+	public : virtual ~Base();
 };
 
+Base *generate(void);
+void identify(Base* p);
+void identify(Base& p);
 #endif

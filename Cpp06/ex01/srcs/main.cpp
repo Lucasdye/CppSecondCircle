@@ -10,9 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
 #include "../incs/Serializer.hpp"
 # include <iostream>
 # include <string>
+
+/*dynamic_cast: Runtime type-checked, safe downcasting within class hierarchies.
+reinterpret_cast: Low-level, unsafe, reinterprets the bit pattern of an object.
+static_cast: Compile-time type-checked, used for well-defined type conversions.*/
+
+/*Why convert pointers to uintptr_t ? Some API need uint addr, better for arithmetics, */
 
 int	main()
 {
@@ -40,7 +48,8 @@ int	main()
 		(void)dataBack;
 		dataBack = Serializer::deserialize(uintptr);
 		std::cout << "dataBack addr: " << data << std::endl;
-		delete data;
+		if (data)
+			delete data;
 	}
 	return (SUC);
 }

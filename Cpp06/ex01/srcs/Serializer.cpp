@@ -15,9 +15,10 @@
 //-------------------- funcs ------------------------------------------------//
 uintptr_t Serializer::serialize(Data* ptr)
 {
-	uintptr_t uintptrValue;
+	uintptr_t uintptrValue = 0;
 
-	uintptrValue = reinterpret_cast<uintptr_t>(ptr);
+	if (ptr)
+		uintptrValue = reinterpret_cast<uintptr_t>(ptr);
 	return (uintptrValue);
 }
 
@@ -26,6 +27,8 @@ Data* Serializer::deserialize(uintptr_t raw)
 	Data *data;
 
 	data = reinterpret_cast<Data*>(raw);
+	if (data == NULL)
+		return ((void)(std::cout << "Fail reinterpret cast" << std::endl), data);
 	return (data);
 }
 

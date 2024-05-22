@@ -6,7 +6,7 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2004/04/20 17:44:20 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/04/16 18:14:04 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/05/22 14:24:35 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,39 +65,31 @@
 # endif
 
 //----- Cpp library
+# include <cfloat>
 # include <iostream>
 # include <string>
 # include <iomanip>
 # include <limits>
-
-//----- Funcs prototype
-long double strToLd(std::string &str);
-double		powerOfTen(int power);
-char 		ldToA(long double nb);
-void		convertAndDisplay(long double nb);
-bool 		noAlphabet(std::string &str);
-
+#include  <cctype>
 class ScalarConverter
 {
-private:
-
-
-
-public:
-	//-------------------- funcs --------------------------------------------//
-	static void convert(std::string &str);
-	// bool checkIntOverflow(std::string &line);
-	// bool checkIntUnderflow(std::string line);
-	// bool isOnlyNumeric(std::string &str);
-	//-------------------- Set/get ------------------------------------------//
+	private:
 	//-------------------- Constructor/Destructor ---------------------------//
-	ScalarConverter();
-    ScalarConverter(ScalarConverter const & src);
-    virtual ~ScalarConverter() = 0;
-	//-------------------- Operators ----------------------------------------//
-    ScalarConverter& operator=(ScalarConverter const & instance);
+	    ~ScalarConverter();
+		ScalarConverter(void);
+	    ScalarConverter(ScalarConverter const & src);
+		//-------------------- funcs --------------------------------------------//
+		static long double 	strToLd(std::string &str);
+		static double		powerOfTen(int power);
+		static void			convertAndDisplay(long double nb);
+		static char 		ldToA(long double nb);
+		static bool 		noAlphabet(std::string &str);
+		//-------------------- Operators ----------------------------------------//
+	    ScalarConverter& 	operator=(ScalarConverter const & instance);
 
+	public:
+		static void convert(std::string &str);
+		//-------------------- Set/get ------------------------------------------//
 };
 
 #endif
-

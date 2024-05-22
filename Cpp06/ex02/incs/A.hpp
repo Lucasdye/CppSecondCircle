@@ -10,28 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+
 #ifndef A_HPP
 # define A_HPP
 
-# include <iostream>
 # include "Base.hpp"
 
 class Base;
 
 class A: public Base
 {
-	private:
-
 	public:
-		//-------------------- funcs --------------------------------------------//
-		//-------------------- Set/get ------------------------------------------//
-		//-------------------- Constructor/Destructor ---------------------------//
-	    A();
-	    A(A const & src);
-	    ~A();
-		//-------------------- Operators ----------------------------------------//
-	    A& operator=(A const & instance);
-
 };
 
 #endif
