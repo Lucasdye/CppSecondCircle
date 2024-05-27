@@ -6,7 +6,7 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2004/04/20 17:44:20 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/05/22 14:30:33 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/05/23 11:19:49 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ long double ScalarConverter::strToLd(std::string &str)
 char 		ScalarConverter::ldToA(long double nb)
 {
 	char convChar = 0;
-	if (nb > 57 && nb < 127)
+	if ((nb > 31 && nb < 48) || (nb > 57 && nb < 127))
 		convChar = static_cast<char>(nb);
 	return (convChar);
 }
