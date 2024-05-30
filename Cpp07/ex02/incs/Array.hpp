@@ -6,48 +6,20 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2011/04/20 15:48:35 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/04/16 17:00:44 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/05/29 10:37:09 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_HPP
 # define ARRAY_HPP
 
-// # ifndef BOLD
-// #  define BOLD "\033[1m"
-// # endif
-
 # ifndef ITALIC
 #  define ITALIC "\033[3m"
 # endif
 
-// # ifndef UNDERLINE
-// #  define UNDERLINE "\033[4m"
-// # endif
-
 # ifndef RED
 #  define RED "\033[31m"
 # endif
-
-// # ifndef GREEN
-// #  define GREEN "\033[32m"
-// # endif
-
-// # ifndef YELLOW
-// #  define YELLOW "\033[33m"
-// # endif
-
-// # ifndef BLUE
-// #  define BLUE "\033[34m"
-// # endif
-
-// # ifndef MAGENTA
-// #  define MAGENTA "\033[35m"
-// # endif
-
-// # ifndef CYAN
-// #  define CYAN "\033[36m"
-// # endif
 
 # ifndef END_C
 #  define END_C "\033[0m"
@@ -75,7 +47,7 @@ class Array
 	
 	public:
 		//-------------------- funcs --------------------------------------------//
-			unsigned int size();
+			unsigned int size() const;
 		//-------------------- Set/get ------------------------------------------//
 		//-------------------- Constructor/Destructor ---------------------------//
 	    				Array();

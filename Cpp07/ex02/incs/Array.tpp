@@ -6,7 +6,7 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2011/04/20 15:48:35 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/04/16 17:04:12 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/05/29 12:17:36 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 //-------------------- funcs ------------------------------------------------//
 template <typename T>
-unsigned int Array<T>::size()
+unsigned int Array<T>::size() const
 {
 	return (_size);
 }
@@ -29,7 +29,7 @@ Array<T>::Array(Array<T> const& src)
 {
 	std::cout << "Copy constructor called for Array" << std::endl;
 	_tab = new T[src._size];
-	for (int i = 0; i < src._size; i++)
+	for (unsigned int i = 0; i < src._size; i++)
 		_tab[i] = src._tab[i];
 	_size = src._size;
 	return ;
@@ -46,10 +46,10 @@ template <typename T>
 Array<T>::Array(unsigned int n): _size(n)
 {
 	std::cout << "Parametric constructor called for Array" << std::endl;
-	Array::ArrayExceptions NullSize("The size of the array can't be null");
-	if (_size == 0)
-		throw NullSize;
-	else
+	// Array::ArrayExceptions NullSize("The size of the array can't be null");
+	// 	throw NullSize;
+	// else
+	//if (_size > 0)
 		_tab = new T[n];
 	return ;
 }
@@ -58,6 +58,8 @@ template <typename T>
 Array<T>::~Array()
 {
 	std::cout << "Destructor called for Array" << std::endl;
+
+		delete [] _tab;
 	return ;
 }
 //-------------------- Operators --------------------------------------------//
@@ -81,11 +83,15 @@ template <typename T>
 T&	Array<T>::operator[](unsigned int idx)
 {
 	Array::ArrayExceptions OutOfBoundIdx("The index is out of bound");
-	
+	//int sizeInt = static_cast<int>(_size);
+	std::cout << "idx: " << idx << std::endl;
 	if (idx >= _size)
 		throw OutOfBoundIdx;
 	else
+	{
+		std::cout << "In else" << std::endl;
 		return (_tab[idx]);
+	}
 }
 
 //-------------------- Exceptions -------------------------------------------//

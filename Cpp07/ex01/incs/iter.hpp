@@ -6,7 +6,7 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 15:36:40 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/04/11 15:45:21 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/05/29 12:10:13 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ template <typename T>
 void myFunc(T const element)
 {
 	std::cout << element << std::endl;
-	return ;	
+	return ;
 }
 
-template <typename T>
-void	iter(T *tab, int size, void(*myFunc)(T))
+template <typename T, typename U>
+void	iter(T *tab, int size, void(*myFunc)(const U))
 {
 	for (int i = 0; i < size; i++)
 		myFunc(tab[i]);

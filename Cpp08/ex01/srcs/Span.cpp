@@ -1,20 +1,19 @@
 # include "../incs/Span.hpp"
 
 //-------------------- Constructor/Destructor -------------------------------//
-Span::Span():  _maxSize(_span.capacity()), _size(_maxSize)
+Span::Span()
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Span::Span(unsigned int size): _maxSize(_span.capacity()), _size(size)
+Span::Span(std::vector<int> vec)
 {
 	std::cout << "Parametric constructor called for Span" << std::endl;
-	if (_size > _maxSize)
-		std::cout << RED << "The size chosen exceeds the capacity of the Span container" << END_C;
-	_size = size;
+	_span = vec;
+
 }
 
-Span::Span(Span const &instance): _span(instance._span), _size(instance._size)
+Span::Span(Span const &instance): _span(instance._span)
 {
 	std::cout << "Copy constructor called for Span" << std::endl;
 }
@@ -28,16 +27,18 @@ Span::~Span()
 int	Span::shortestSpan()
 {
 	int span;
-	int tmp;
+	std::vector<int> cpySorted;
+	 
 
-	span = std::numeric_limits<int>::max();
-	if (_size != 0 && _span.empty() == false && _span.size() > 1)
+	if (_span.empty() == false && _span.size() > 1)
 	{
-		for (size_t i = 0; i < _span.size(); i++)
+		cpySorted = _span;
+		std::sort(cpySorted.begin(), cpySorted.end());
+		span = std::numeric_limits<int>::max();
+		for (size_t i = 0; i < cpySorted.size() - 1; i++)
 		{
-			tmp = abs(_span[i + 1] - _span[i]);
-			if (tmp < span)
-				span = tmp;
+			if (abs(cpySorted[i] - cpySorted[i + 1]) < span)
+				span = abs(cpySorted[i] - cpySorted[i + 1]);
 		}
 	}
 	else
@@ -48,17 +49,15 @@ int	Span::shortestSpan()
 int	Span::longestSpan()
 {
 	int span;
-	int tmp;
+	std::vector<int> cpySorted;
 
 	span = 0;
-	if (_size != 0 && _span.empty() == false && _span.size() > 1)
+	if (_span.empty() == false && _span.size() > 1)
 	{
-		for (size_t i = 0; i < _span.size(); i++)
-		{
-			tmp = abs(_span[i + 1] - _span[i]);
-			if (tmp > span)
-				span = tmp;
-		}
+		std::cout << "IN condition" << std::endl;
+		cpySorted = _span;
+		std::sort(cpySorted.begin(), cpySorted.end());
+		span = cpySorted[cpySorted.size() - 1] - cpySorted[0];
 	}
 	else
 		throw Span::SpanException (std::string(YELLOW) + "The container is empty or has only one element" + END_C);
@@ -67,24 +66,33 @@ int	Span::longestSpan()
 
 void	Span::addNumber(int nb)
 {
-	if (_span.size() + 1 > _size)
-		throw Span::SpanException (std::string(YELLOW) + "The container has reached its maximum size" + END_C);
 	_span.push_back(nb);
-
+	return ;
 }
 
 //-------------------- Set/Get ----------------------------------------------//
+std::vector<int>& Span::getSpan()
+{
+	return (_span);
+}
+
+void			Span::setSpan(std::vector<int>& vec)
+{
+	_span = vec;
+	return ;
+}
+
 //-------------------- Operators --------------------------------------------//
 Span	&Span::operator=(Span const &instance)
 {
 	if (this != &instance)
 	{
-		_size = instance._size;
 		_span.clear();
 		_span = instance._span;
 	}
 	return (*this);
 }
+
 //-------------------- Exceptions -------------------------------------------//
 Span::SpanException::SpanException()
 {

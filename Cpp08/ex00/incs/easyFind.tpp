@@ -17,6 +17,7 @@
 # include <iostream>
 # include <cstdlib>
 # include <string>
+# include <algorithm>
 
 
 class FindException : public std::exception
@@ -25,24 +26,19 @@ class FindException : public std::exception
 		const std::string _errMsg;
 	public:
 		FindException(const std::string& msg): _errMsg(msg) {};
-		~FindException() throw() {};
+		virtual ~FindException() throw() {};
 		const char *what() const throw();
 };
 
-template <typename T> // The template typename T allows us to receive any type of contatainer of any type.
+template <typename T> // The template typename T allows us to receive any type of container of any type.
 void easyFind(const T& container, int find)
 {
-	typename T::const_iterator it;// the container::iterator 'it' will be the type within the para 'container'.
 	FindException NotFound(std::string(RED) + "The value wasn't find in the container" + std::string(END_C));
-	for (it = container.begin(); it != container.end(); it++)
-	{
-		if (*it == find)
-		{	
-			std::cout << GREEN << "The value " << find << " has been found " << END_C << std::endl;
-			return ;
-		}
-	}
-	throw NotFound;
+	//typename T::const_iterator it; // the container::iterator 'it' will be the type within the para 'container'.
+	//typename T::iterator itFind;
+	//itFind = std::find(container.begin(), container.end(), find);
+	if (std::find(container.begin(), container.end(), find) == container.end())
+		throw NotFound;
 	return ;
 };
 

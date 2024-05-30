@@ -53,8 +53,8 @@ class Span
 {
 	private:
 		std::vector<int> 	_span;
-		unsigned int 		_maxSize; //specified by the compiler. 
-		unsigned int		_size; //specified by the dev
+		//unsigned int 		_maxSize; //specified by the compiler. 
+		//unsigned int		_size; //specified by the dev
 
 	public:
 	//-------------------- funcs --------------------------------------------//
@@ -62,9 +62,11 @@ class Span
 		int		longestSpan();
 		void	addNumber(int nb);
 	//-------------------- Set/get ------------------------------------------//
+		std::vector<int>&	getSpan();
+		void				setSpan(std::vector<int>& vec);
 	//-------------------- Constructor/Destructor ---------------------------//
 				Span();
-				Span(unsigned int size);
+				Span(std::vector<int> vec);
 				Span(Span const &instance);
 				~Span();
 	//-------------------- Operator -----------------------------------------//
