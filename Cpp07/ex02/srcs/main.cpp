@@ -6,7 +6,7 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2011/04/20 15:48:35 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/05/29 12:20:59 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/05/31 10:44:22 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,23 @@ int	main()
     // delete [] mirror;//
 	// }
 	{
-		Array<std::string> ArrStr(0);
+		Array<std::string> ArrStr(2);
 		Array<std::string> ArrStrEmpty;
 		Array<std::string> ArrStrEmtpy2(0);
 
+		ArrStr[0] = "yo";
+		ArrStr[1] = "hello";
+		try {
+			std::cout << ArrStr[0] << std::endl;
+			std::cout << ArrStr[1] << std::endl;
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what();
+		}
 		try {
 			
-		std::cout << ArrStr[0] << std::endl;
+		std::cout << ArrStrEmpty[0] << std::endl;
 		}
 		catch (std::exception &e)
 		{

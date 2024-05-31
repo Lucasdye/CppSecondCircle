@@ -6,7 +6,7 @@
 /*   By: lbouguet <lbouguet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2011/04/20 15:48:35 by lbouguet          #+#    #+#             */
-/*   Updated: 2024/05/29 12:17:36 by lbouguet         ###   ########.fr       */
+/*   Updated: 2024/05/31 10:46:24 by lbouguet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ Array<T>::Array(unsigned int n): _size(n)
 	// 	throw NullSize;
 	// else
 	//if (_size > 0)
-		_tab = new T[n];
+	_tab = new T[n];
 	return ;
 }
 
@@ -58,8 +58,7 @@ template <typename T>
 Array<T>::~Array()
 {
 	std::cout << "Destructor called for Array" << std::endl;
-
-		delete [] _tab;
+	delete [] _tab;
 	return ;
 }
 //-------------------- Operators --------------------------------------------//
@@ -84,33 +83,30 @@ T&	Array<T>::operator[](unsigned int idx)
 {
 	Array::ArrayExceptions OutOfBoundIdx("The index is out of bound");
 	//int sizeInt = static_cast<int>(_size);
-	std::cout << "idx: " << idx << std::endl;
 	if (idx >= _size)
 		throw OutOfBoundIdx;
 	else
-	{
-		std::cout << "In else" << std::endl;
 		return (_tab[idx]);
-	}
+	
 }
 
 //-------------------- Exceptions -------------------------------------------//
 template <typename T>
 Array<T>::ArrayExceptions::ArrayExceptions(const std::string errMsg): _errMsg(RED + errMsg + END_C)
 {
-	std::cout << ITALIC << "Parametric constructor called for ArrayExceptions" << END_C << std::endl;
+	//std::cout << ITALIC << "Parametric constructor called for ArrayExceptions" << END_C << std::endl;
 }
 
 template <typename T>
 Array<T>::ArrayExceptions::~ArrayExceptions() throw()
 {
-	std::cout << ITALIC << "Deconstructor called for ArrayExceptions" << END_C << std::endl;
+	//std::cout << ITALIC << "Deconstructor called for ArrayExceptions" << END_C << std::endl;
 }
 
 template <typename T>
 Array<T>::ArrayExceptions::ArrayExceptions(): _errMsg("None")
 {
-	std::cout << ITALIC << "Constructor called for ArrayExceptions" << END_C << std::endl;
+	//std::cout << ITALIC << "Constructor called for ArrayExceptions" << END_C << std::endl;
 }
 
 template <typename T>
