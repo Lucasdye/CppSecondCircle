@@ -18,11 +18,9 @@ int	main(int ac, char **av)
 	}
 	catch (const std::exception &e) 
 	{
-		std::cout << "EXCEPTION\n";
 		std::cout << e.what() << std::endl;
 		return (ERR);
 	}
 	BtcEx.readingInputFile();
-	std::cout << "END\n";
 	return (0);
 }

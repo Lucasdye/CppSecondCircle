@@ -66,7 +66,7 @@ void		BitcoinExchange::openFileInput(std::string fileNam)
 	if (_ifsInput.fail())
 		throw BitcoinExchange::BtcExException(std::string(RED) + "The file " + fileNam + " couldn't be open" + END_C);
 	
-	//Checking it isn't empty
+	//Checking if it isn't empty
 	while (std::getline(_ifsInput, line))
 		_sizeIn++;
 	if (_sizeIn == 0)
@@ -107,7 +107,6 @@ void		BitcoinExchange::defineMapCsv()
 		fVal = std::strtof(strVal.c_str(), &endptr);
 		if (*endptr != '\0')
 			throw std::invalid_argument("Invalid value format: " + strVal);
-		//std::cout << GREEN << msDate << END_C << std::endl;
 		_csvBtc[msDate] = fVal;
 	}
 	return ;
@@ -158,11 +157,10 @@ void		BitcoinExchange::outputResult(std::string date, std::string value)
 				res = _csvBtc[foundDate] * btcVol;
 				strFoundDate = time_t_to_localtime_string(foundDate);
 				std::cout << strFoundDate << " => " << value << " = " << res << std::endl;; 
-				//2011-01-03 => 3 = 0.9
 			}
 		}
 		else
-			std::cout << "Error: the csv file doesn't go below the given date: " << date << std::endl;
+			std::cout << "Error: the date is too backwards => " << date << std::endl;
 	}
 	else
 		std::cout << "Error: bad input => " + date << std::endl;
@@ -172,12 +170,10 @@ time_t	BitcoinExchange::findDateInMap(std::time_t date)
 {
 	if (date == -1 || _csvBtc.begin()->first > date)
 	{	
-		//std::cout << "Case1" << std::endl;
 		return (ERR);
 	}
 	else if (_csvBtc.rbegin()->first <=  date)
 	{
-		//std::cout << "Case2" << std::endl;
 		return (_csvBtc.rbegin()->first);
 	}
 	else

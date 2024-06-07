@@ -34,9 +34,6 @@ template <typename T> // The template typename T allows us to receive any type o
 void easyFind(const T& container, int find)
 {
 	FindException NotFound(std::string(RED) + "The value wasn't find in the container" + std::string(END_C));
-	//typename T::const_iterator it; // the container::iterator 'it' will be the type within the para 'container'.
-	//typename T::iterator itFind;
-	//itFind = std::find(container.begin(), container.end(), find);
 	if (std::find(container.begin(), container.end(), find) == container.end())
 		throw NotFound;
 	return ;

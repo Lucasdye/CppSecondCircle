@@ -28,7 +28,7 @@ void	printContainer(const T& container)
 		std::cout << it->val << " "; 
 		it++;
 	}
-	std::cout << std::endl;
+	//std::cout << std::endl;
 	return ;
 };
 
@@ -36,9 +36,9 @@ void	printContainer(const T& container)
 
 typedef struct s_nb
 {
-	int		val;
-	size_t	idx_pair;
-	size_t	idx_temp;
+	int					val;
+	std::vector<int>	pair;	
+	int					_newOrder;
 }	t_nb;
 
 class PmergeMe
@@ -46,26 +46,25 @@ class PmergeMe
 	private:
 		int					_comparisonCount;
 		std::vector<int>	_Jacobsthal;
+		std::vector<int>	_Jacobsthal_diff;
 		std::deque<t_nb>	_elements;
 		std::deque<t_nb>	_big;
 		std::deque<t_nb>	_bigSorted;
 		std::deque<t_nb>	_small;
 
 	public:
-		// void		fillArray(char **list);
-	//	void		secondSplit();
 		void				generateJacobsthal();
-		void				pairSplit();
-		void				binarySearch(std::deque<t_nb>& big, std::deque<t_nb>& small, std::vector<int>::iterator& it);
-		//void				printDeq(std::deque<t_nb> deq);
-		//void				printVec(std::<t_nb> deq);
+		void				generateJacobsthalDiff();
+		void				binarySearch(std::deque<t_nb>& big, t_nb element, int idxBig);
 		std::deque<t_nb>	FordJohnsonSort(std::deque<t_nb> arr);
+		void				PoppingFirstPair(std::deque<t_nb>& big, std::deque<t_nb>& small);
 		std::deque<t_nb>	JacobsthalInsertion(std::deque<t_nb> big, std::deque<t_nb> small);
 		std::deque<t_nb>		getElem();
 		std::deque<t_nb>	getBig();
+		std::vector<int>	getJaco();
+		int					getComparisonCount();
 		std::deque<t_nb>	getBigSorted();
 		void				setBigSorted(std::deque<t_nb> bigSorted);
-		//std::vector<t_nb>	getSmall();
 		PmergeMe();
 		PmergeMe(char **av);
 		~PmergeMe();

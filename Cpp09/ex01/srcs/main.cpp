@@ -37,7 +37,7 @@ int main(int ac, char **av)
 			{
 				int nb1;
 				int nb2;
-				if (str[i] == '+' )
+				if (str[i] == '+')
 				{
 					nb1 = Rpn.getObjS().top();
 					Rpn.getObjS().pop();
@@ -47,11 +47,11 @@ int main(int ac, char **av)
 					if (res > std::numeric_limits<int>::max() || res < std::numeric_limits<int>::min())
 					{
 						std::cout << "ERROR: int max or int min" << std::endl;
-						return ;
+						return -1;
 					}
 					Rpn.getObjS().push(static_cast<int>(res));
 				}
-				if (str[i] == '-' )
+				if (str[i] == '-')
 				{
 					nb1 = Rpn.getObjS().top();
 					Rpn.getObjS().pop();
@@ -61,11 +61,11 @@ int main(int ac, char **av)
 					if (res > std::numeric_limits<int>::max() || res < std::numeric_limits<int>::min())
 					{
 						std::cout << "ERROR: int max or int min" << std::endl;
-						return ;
+						return -1;
 					}
 					Rpn.getObjS().push(static_cast<int>(res));
 				}
-				if (str[i] == '*' )
+				if (str[i] == '*')
 				{	
 					nb1 = Rpn.getObjS().top();
 					Rpn.getObjS().pop();
@@ -75,7 +75,7 @@ int main(int ac, char **av)
 					if (res > std::numeric_limits<int>::max() || res < std::numeric_limits<int>::min())
 					{
 						std::cout << "ERROR: int max or int min" << std::endl;
-						return ;
+						return -1;
 					}
 					Rpn.getObjS().push(static_cast<int>(res));
 				}
@@ -94,7 +94,7 @@ int main(int ac, char **av)
 					if (res > std::numeric_limits<int>::max() || res < std::numeric_limits<int>::min())
 					{
 						std::cout << "ERROR: int max or int min" << std::endl;
-						return ;
+						return -1;
 					}
 					Rpn.getObjS().push(static_cast<int>(res));
 				}
@@ -105,7 +105,7 @@ int main(int ac, char **av)
 			if (i < (str.size() - 1) && (str[i + 1] >= 48 && str[i + 1] <= 57))
 			{	
 				std::cout << "ERROR: " << "all number value should be between 0 and 9" << std::endl;
-				return 0;
+				return -1;
 			}
 			else
 				Rpn.getObjS().push(str[i] - 48);

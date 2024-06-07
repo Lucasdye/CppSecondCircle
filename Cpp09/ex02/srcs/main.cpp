@@ -10,21 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include <string>
 #include <iostream>
-#include "PmergeMe.hpp"
+#include "../incs/PmergeMe.hpp"
 
+
+bool	isItSorted(std::deque<t_nb> main)
+{
+	for (size_t i = 1; i < main.size(); i++)
+	{
+		if (main[i].val < main[i - 1].val)
+			return (0);
+	}
+	return (1);
+}
 
 int	main(int ac, char **av)
 {
 	if (ac < 3)
 		return (-1);
-	PmergeMe ppm(av);
-	ppm.pairSplit();
-	ppm.FordJohnsonSort(ppm.getElem());
-	printContainer(ppm.getBig());
-	//ppm.setBigSorted(ppm.mergeSort(ppm.getBig()));
-	//ppm.printDeq(ppm.getBigSorted());
+	PmergeMe pmm(av);
+	pmm.generateJacobsthal();
+	pmm.setBigSorted(pmm.FordJohnsonSort(pmm.getElem()));
+	printContainer(pmm.getBigSorted());
+	std::cout << std::endl;
+	std::cout << "size sorted: " << pmm.getBigSorted().size() << std::endl;
+	std::cout << "Comparison count: " << pmm.getComparisonCount() << std::endl;
+	if (isItSorted(pmm.getBigSorted()) == false)
+		std::cout << RED << "Not sorted !\n" << reset;
+	else
+		std::cout << BLU << "Sorted !\n" << reset;
 	return (0);
 }
