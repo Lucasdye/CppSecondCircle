@@ -53,8 +53,6 @@ class Span
 {
 	private:
 		std::vector<int> 	_span;
-		//unsigned int 		_maxSize; //specified by the compiler. 
-		//unsigned int		_size; //specified by the dev
 
 	public:
 	//-------------------- funcs --------------------------------------------//

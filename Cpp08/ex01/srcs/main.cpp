@@ -23,16 +23,15 @@ int main()
 	longestSpan = Span.longestSpan();
 	std::cout << "longest span: " << longestSpan << std::endl;
 	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
+	catch (std::exception &e){
+	std::cout << e.what() << std::endl;
 	}
 	try {
 	shortestSpan = Span.shortestSpan();
 	std::cout << "shortest span: " << shortestSpan << std::endl;
 	}
-	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+	catch (std::exception &e){
+	std::cout << e.what() << std::endl;
 	}
 	return (0);
 }

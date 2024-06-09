@@ -26,24 +26,23 @@ Span::~Span()
 //-------------------- funcs ------------------------------------------------//
 int	Span::shortestSpan()
 {
-	int span;
+	int lowest_span;
 	std::vector<int> cpySorted;
 	 
-
 	if (_span.empty() == false && _span.size() > 1)
 	{
 		cpySorted = _span;
 		std::sort(cpySorted.begin(), cpySorted.end());
-		span = std::numeric_limits<int>::max();
+		lowest_span = std::numeric_limits<int>::max();
 		for (size_t i = 0; i < cpySorted.size() - 1; i++)
 		{
-			if (abs(cpySorted[i] - cpySorted[i + 1]) < span)
-				span = abs(cpySorted[i] - cpySorted[i + 1]);
+			if (abs(cpySorted[i] - cpySorted[i + 1]) < lowest_span)
+				lowest_span = abs(cpySorted[i] - cpySorted[i + 1]);
 		}
 	}
 	else
 		throw Span::SpanException (std::string(YELLOW) + "The container is empty or has only one element" + END_C);
-	return (span);
+	return (lowest_span);
 }
 
 int	Span::longestSpan()
@@ -54,10 +53,9 @@ int	Span::longestSpan()
 	span = 0;
 	if (_span.empty() == false && _span.size() > 1)
 	{
-		std::cout << "IN condition" << std::endl;
 		cpySorted = _span;
 		std::sort(cpySorted.begin(), cpySorted.end());
-		span = cpySorted[cpySorted.size() - 1] - cpySorted[0];
+		span = cpySorted.back() - cpySorted.front();
 	}
 	else
 		throw Span::SpanException (std::string(YELLOW) + "The container is empty or has only one element" + END_C);

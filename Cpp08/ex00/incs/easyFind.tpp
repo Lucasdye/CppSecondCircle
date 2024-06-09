@@ -33,9 +33,10 @@ class FindException : public std::exception
 template <typename T> // The template typename T allows us to receive any type of container of any type.
 void easyFind(const T& container, int find)
 {
-	FindException NotFound(std::string(RED) + "The value wasn't find in the container" + std::string(END_C));
-	if (std::find(container.begin(), container.end(), find) == container.end())
+	if (std::find(container.begin(), container.end(), find) == container.end()){
+		FindException NotFound(std::string(RED) + "The value wasn't find in the container" + std::string(END_C));
 		throw NotFound;
+	}
 	return ;
 };
 

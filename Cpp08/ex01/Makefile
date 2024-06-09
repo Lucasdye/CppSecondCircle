@@ -1,4 +1,4 @@
-NAME = ContainersPrg
+NAME = span
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 OBJ_DIR = objs/
