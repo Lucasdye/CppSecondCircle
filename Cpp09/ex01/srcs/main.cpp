@@ -59,7 +59,7 @@ int main(int ac, char **av)
 					Rpn.getObjS().pop();
 					nb2 = Rpn.getObjS().top();
 					Rpn.getObjS().pop();
-					res = nb2 - nb1;
+					res = nb1 - nb2;
 					if (res > std::numeric_limits<int>::max() || res < std::numeric_limits<int>::min())
 					{
 						std::cout << "ERROR: int max or int min" << std::endl;
