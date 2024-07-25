@@ -18,8 +18,10 @@ int main(int ac, char **av)
 	double 		res = 0;
 	std::string str;
 
-	if (ac < 1)
+	if (ac <= 1) {
 		std::cout << "ERROR: " << "invalid argument" << std::endl;
+		return -1;
+	}
 	
 	for (size_t i = 1; av[i] != NULL; i++)
 	{	
